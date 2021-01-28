@@ -1,0 +1,6 @@
+# Common
+**/node_modules
+**/env
+
+# Server
+learn-a-bit-server/structure.png
