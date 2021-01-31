@@ -22,7 +22,11 @@ let userSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now
-    }
+    },
+    summaries: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Summary"
+    }]
 })
 
 userSchema.pre("save", async function (next) {
