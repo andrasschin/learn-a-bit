@@ -8,6 +8,7 @@ dotenv.config();
 
 const errorHandler  = require("./handlers/error");
 const authRoutes    = require("./routes/auth");
+const summaryRoutes = require("./routes/summaries");
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -17,6 +18,7 @@ app.get("/", (req, res, next) => {
 })
 
 app.use(authRoutes);
+app.use("/users/:user_id/summaries", summaryRoutes);
 
 // If no routes are good
 app.use((req, res, next) => {
