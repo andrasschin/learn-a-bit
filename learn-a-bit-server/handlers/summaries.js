@@ -21,7 +21,7 @@ exports.createSummary = async function (req, res, next) {
             ...req.body
         });
     
-        let user = await db.User.findById(req.params.user_id)
+        let user = await db.User.findById(req.params.user_id);
         user.summaries.push(summary.id);
         await user.save();
     
@@ -57,7 +57,7 @@ exports.updateSummary = async function (req, res, next) {
 // * DELETE
 exports.deleteSummary = async function (req, res, next) {
     try {
-        let summary = await db.Summary.findById(req.params.summary_id)
+        let summary = await db.Summary.findById(req.params.summary_id);
         summary.remove();
         res.status(200).json(summary);
     } catch (err) {

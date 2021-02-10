@@ -10,6 +10,8 @@ const errorHandler  = require("./handlers/error");
 const authRoutes    = require("./routes/auth");
 const summaryRoutes = require("./routes/summaries");
 
+const { ensureLogin, ensureLoginAndCorrectUser } = require("./middleware/auth");
+
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -17,14 +19,19 @@ app.get("/", (req, res, next) => {
     res.send("HI")
 })
 
-app.use(authRoutes);
-app.use("/users/:user_id/summaries", summaryRoutes);
+app.use("/api/auth", authRoutes);
+app.use(
+    "/api/users/:user_id/summaries", 
+    ensureLoginAndCorrectUser, 
+    summaryRoutes
+);
 
 // If no routes are good
 app.use((req, res, next) => {
-    let err = new Error(404);
-    err.message = "Not found."
-    next(err)
+    return next({
+        status: 404,
+        message: "Not found."
+    })
 })
 
 // Error handler
