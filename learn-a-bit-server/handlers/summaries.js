@@ -58,6 +58,9 @@ exports.updateSummary = async function (req, res, next) {
 exports.deleteSummary = async function (req, res, next) {
     try {
         let summary = await db.Summary.findById(req.params.summary_id);
+        /**
+         * TODO: Remove the ID also from user.summaries
+         */
         summary.remove();
         res.status(200).json(summary);
     } catch (err) {

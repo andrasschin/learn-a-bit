@@ -8,3 +8,5 @@ mongoose.connect("mongodb://localhost:27017/learn-a-bit", {
 
 module.exports.User = require("./user");
 module.exports.Summary = require("./summary");
+module.exports.Book = require("./book");
+module.exports.YoutubeChannel = require("./youtubeChannel");

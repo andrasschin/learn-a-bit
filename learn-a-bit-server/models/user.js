@@ -26,6 +26,10 @@ let userSchema = new Schema({
     summaries: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Summary"
+    }],
+    youtubeChannels: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "YoutubeChannel"
     }]
 })
 
