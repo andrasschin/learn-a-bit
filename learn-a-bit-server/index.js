@@ -9,7 +9,7 @@ dotenv.config();
 const errorHandler  = require("./handlers/error");
 const authRoutes    = require("./routes/auth");
 const summaryRoutes = require("./routes/summaries");
-const youtubeChannelRoutes = require("./routes/youtubeChannels.js")
+const youtubeChannelRoutes = require("./routes/youtube-channels.js")
 
 const { ensureLogin, ensureLoginAndCorrectUser } = require("./middleware/auth");
 
@@ -33,7 +33,7 @@ app.use(
 // Source routes
 //  Youtube Channel routes
 app.use(
-    "/api/users/:user_id/sources/youtube_channels",
+    "/api/users/:user_id/sources/youtube-channels",
     ensureLoginAndCorrectUser,
     youtubeChannelRoutes  
 );

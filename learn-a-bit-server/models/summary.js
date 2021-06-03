@@ -35,7 +35,7 @@ summarySchema.methods.updateWithReqBody = async function (params, next) {
             if (this[param]) this[param] = params[param];
         });
         await this.save();
-        console.log("JÓ JÓJÓ JÓÓ JÓJ");
+        console.log("Successfully updated summary.");
     } catch (err) {
         next(err);
     }

@@ -11,11 +11,7 @@ exports.getChannels = async function (req, res, next){
 }
 
 exports.createChannel = async function (req, res, next){
-    console.log("CREATE")
     try {
-        /**
-         * * A more efficient way of doing this could be that we don't store youtube channels for each user, instead we reference them from a 'common' database that contain all the youtube channels that were required on the site.
-         */
         let channel = await db.YoutubeChannel.create(req.body);
 
         let user = await db.User.findById(req.params.user_id);
