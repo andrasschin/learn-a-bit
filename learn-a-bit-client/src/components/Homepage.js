@@ -1,6 +1,4 @@
-import React, { Fragment } from 'react';
-
-import { connect } from 'react-redux';
+import React from 'react';
 
 const Homepage = (props) => {
     const { currentUser } = props;
@@ -21,10 +19,4 @@ const Homepage = (props) => {
     )
 }
 
-function mapStateToProps(state){
-    return {
-        currentUser: state.currentUser
-    }
-}
-
-export default connect(mapStateToProps, null)(Homepage);
+export default Homepage;

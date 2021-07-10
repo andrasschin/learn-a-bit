@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
@@ -21,13 +21,33 @@ class Navbar extends Component {
                         <Link to="/signup">Sign up</Link>
                     </div>
                     : 
-                    <Link 
-                        to="/logout" 
-                        className="ms-auto"
-                        onClick={this.logout}
-                    >
-                        Log out from account {currentUser.user.username}
-                    </Link>
+                    <>
+                        <Link
+                            to="/channels"
+                        >
+                            Channels
+                        </Link>
+
+                        <Link
+                            to="/summaries"
+                        >
+                            Summaries
+                        </Link>
+
+                        <Link
+                            to="/community"
+                        >
+                            Community
+                        </Link>
+
+                        <Link 
+                            to="/logout" 
+                            className="ms-auto"
+                            onClick={this.logout}
+                        >
+                            Log out from account {currentUser.user.username}
+                        </Link>
+                    </>
                 }
                 
             </nav>

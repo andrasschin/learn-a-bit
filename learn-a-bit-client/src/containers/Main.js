@@ -7,17 +7,32 @@ import { authUser, signUpUser } from "../store/actions/auth";
 import { addError, removeError } from "../store/actions/errors";
 
 import Homepage from "../components/Homepage";
+import ChannelList from "./ChannelList";
 import LoginForm from "../components/LoginForm";
 import SignupForm from "../components/SignupForm";
 
 const Main = (props) => {
-    const { authUser, signUpUser, errors, addError, removeError } = props;
+    const { authUser, signUpUser, currentUser, errors, addError, removeError } = props;
     
     return (
         <Switch>
             <Route 
                 exact path="/" 
-                component={Homepage}
+                render={() => {
+                    return (
+                        <Homepage 
+                            currentUser={currentUser}
+                        />
+                    )
+                }}
+            />
+            <Route
+                exact path="/channels"
+                render={() => {
+                    return (
+                        <ChannelList />
+                    )
+                }}
             />
             <Route 
                 exact path="/signup" 
@@ -52,7 +67,8 @@ const Main = (props) => {
 
 function mapStateToProps(state){
     return {
-        errors: state.errors
+        errors: state.errors,
+        currentUser: state.currentUser
     }
 }
 

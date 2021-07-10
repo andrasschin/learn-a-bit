@@ -2,11 +2,19 @@ import axios from "axios";
 import { SET_CURRENT_USER } from "../actionTypes";
 import { addError, removeError } from "./errors";
 
-function setCurrentUser(user) {
+export function setCurrentUser(user) {
     return {
         type: SET_CURRENT_USER,
         user
     };
+}
+
+export function setAuthorizationToken(token) {
+    if (token) {
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    } else {
+        delete axios.defaults.headers.common;
+    }
 }
 
 export function logout(){
@@ -64,30 +72,3 @@ export function signUpUser(userData){
         })
     }
 }
-
-// ! depreciated
-/* export function authUser(userData) {
-    return (dispatch) => {
-        return fetch("/api/auth/signin", {
-            method: "POST",
-            headers: new Headers({
-                "Content-Type": "application/json",
-            }),
-            body: JSON.stringify(userData),
-        })
-            .then((res) => {
-                if (res.ok) {
-                    console.log("res is ok");
-                    return res.json();
-                } else {
-                    console.log("res is NOT ok");
-                    return {};
-                }
-            })
-            .then((userInfo) => {
-                localStorage.setItem("jwtToken", userInfo.token);
-                dispatch(setCurrentUser(userInfo));
-            })
-            .catch((err) => console.log("ERROR: ", err));
-    };
-} */

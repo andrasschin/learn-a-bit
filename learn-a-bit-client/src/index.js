@@ -6,14 +6,25 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { configureStore } from "./store";
+import jwtDecode from "jwt-decode";
+
+import { setAuthorizationToken, setCurrentUser } from "./store/actions/auth";
+
+const store = configureStore();
 
 if (localStorage.jwtToken) {
-    // restore the user
+    setAuthorizationToken(localStorage.jwtToken);
+    try {
+        store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)))
+    } catch (e) {
+        store.dispatch(setCurrentUser({}))
+    }
 }
+
 
 ReactDOM.render(
     <React.StrictMode>
-        <Provider store={configureStore()}>
+        <Provider store={store}>
             <BrowserRouter>
                 <App />
             </BrowserRouter>
