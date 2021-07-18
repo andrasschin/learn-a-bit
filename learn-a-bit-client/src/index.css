@@ -22,3 +22,35 @@ nav {
     padding-left: 5px;
     padding-right: 20px;
 }
+
+/* Channels */
+
+.channels-hero {
+    margin: 10px 25px;
+}
+
+.channel-list {
+    margin-top: 30px;
+    display: flex;
+    /* background-color: darkcyan; */
+}
+
+.channel-list-item {
+    text-transform: uppercase;
+    font-size: 20px;
+    background-color: bisque;
+    padding: 5px 10px;
+    font-weight: 600;
+}
+
+.channel-list-item:hover {
+    color: white;
+    background-color: rgb(20, 220, 63);
+    cursor: pointer;
+}
+
+.channel-list-item-remove-btn {
+    font-weight: 100;
+    color: crimson;
+    margin-left: 5px;
+}

@@ -16,9 +16,11 @@ export function getChannels(){
             axios.get(`/api/users/${id}/sources/youtube-channels`)
                 .then(res => {
                     dispatch(loadChannels(res.data));
+                    resolve();
                 })
                 .catch(err => {
                     console.log("[ERROR] GETCHANNELS: ", err.response.data.error.message)
+                    reject();
                 })
         })
     }

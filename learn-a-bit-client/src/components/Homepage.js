@@ -11,7 +11,7 @@ const Homepage = (props) => {
                 </>
                 : 
                 <>
-                    <h1>Good to see you back {currentUser.user.username} !</h1>
+                    <h1>Good to see you back, <b>{currentUser.user.username}</b>.</h1>
                     <h4>Hope you have a very nice day! :)</h4>
                 </>
             }

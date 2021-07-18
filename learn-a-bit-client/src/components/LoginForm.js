@@ -21,6 +21,9 @@ class LoginForm extends Component {
             removeError();
         })
 
+        /*
+        * To be fixed: label's htmlFor should match input's id not name property.
+        */
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>

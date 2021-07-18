@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { logout } from '../store/actions/auth';
+import { logoutUser } from '../store/actions/auth';
 
 class Navbar extends Component {
     constructor(props){
@@ -56,10 +56,10 @@ class Navbar extends Component {
 
     logout(e) {
         e.preventDefault();
-        this.props.logout();
+        this.props.logoutUser();
         this.props.history.push("/");
     }
     
 }
 
-export default connect(null, { logout })(Navbar);
+export default connect(null, { logoutUser })(Navbar);
