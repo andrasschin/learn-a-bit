@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getChannels } from "../store/actions/channels";
+
 import ChannelItem from "../components/ChannelItem";
+import NewChannelForm from "./NewChannelForm";
 
 class ChannelList extends Component {
     constructor(props){
@@ -46,35 +48,11 @@ class ChannelList extends Component {
                                         className="btn btn-outline-danger"
                                         onClick={this.onFormToggle}    
                                     >
-                                            <i class="fas fa-minus-circle"></i> Close form
+                                            <i className="fas fa-minus-circle"></i> Close form
                                     </button>
-                                    <form>
-                                        <div>
-                                            <label 
-                                                className="form-label"
-                                                htmlFor="channelNameInput"
-                                            >
-                                                Name
-                                            </label>
-                                            <input 
-                                                className="form-control"
-                                                type="text"
-                                                id="channelNameInput"
-                                            />
-                                        </div>
-                                        <div>
-                                            <label 
-                                                className="form-label"
-                                                htmlFor="channelIdInput">ID
-                                            </label>
-                                            <input
-                                                className="form-control"
-                                                type="text"
-                                                id="channelIdInput"
-                                            />
-                                        </div>
-                                        <button className="btn btn-primary">Save</button>
-                                    </form>
+                                    <NewChannelForm 
+                                        onFormToggle={this.onFormToggle}
+                                    />
                                 </>
                                 : 
                                 <>
@@ -82,7 +60,7 @@ class ChannelList extends Component {
                                         className="btn btn-outline-warning"
                                         onClick={this.onFormToggle}    
                                     >
-                                            <i class="fas fa-plus"></i> Add a channel
+                                            <i className="fas fa-plus"></i> Add a channel
                                     </button>
                                     <div className="channel-list">
                                         {channelList}

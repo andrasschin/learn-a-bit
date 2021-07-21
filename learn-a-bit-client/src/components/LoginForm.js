@@ -21,9 +21,6 @@ class LoginForm extends Component {
             removeError();
         })
 
-        /*
-        * To be fixed: label's htmlFor should match input's id not name property.
-        */
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -31,6 +28,7 @@ class LoginForm extends Component {
                     <input 
                         type="text" 
                         name="usernameInput"
+                        id="usernameInput"
                         value={usernameInput}
                         onChange={this.handleChange}
                     />
@@ -39,6 +37,7 @@ class LoginForm extends Component {
                     <input 
                         type="password" 
                         name="passwordInput"
+                        id="passwordInput"
                         value={passwordInput}
                         onChange={this.handleChange}
                     />

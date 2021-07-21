@@ -23,7 +23,7 @@ nav {
     padding-right: 20px;
 }
 
-/* Channels */
+/* ChannelList */
 
 .channels-hero {
     margin: 10px 25px;
@@ -35,17 +35,20 @@ nav {
     /* background-color: darkcyan; */
 }
 
+/* ChannelItem */
+
 .channel-list-item {
     text-transform: uppercase;
     font-size: 20px;
     background-color: bisque;
     padding: 5px 10px;
     font-weight: 600;
+    margin: 0 15px;
 }
 
 .channel-list-item:hover {
     color: white;
-    background-color: rgb(20, 220, 63);
+    background-color: rgb(64, 204, 162);
     cursor: pointer;
 }
 

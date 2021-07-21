@@ -29,6 +29,7 @@ class SignupForm extends Component {
                     <input 
                         type="text" 
                         name="usernameInput"
+                        id="usernameInput"
                         value={usernameInput}
                         onChange={this.handleChange}
                     />
@@ -37,6 +38,7 @@ class SignupForm extends Component {
                     <input 
                         type="password" 
                         name="passwordInput"
+                        id="passwordInput"
                         value={passwordInput} 
                         onChange={this.handleChange}
                     />
@@ -45,6 +47,7 @@ class SignupForm extends Component {
                     <input 
                         type="password" 
                         name="confirmPasswordInput"
+                        id="confirmPasswordInput"
                         value={confirmPasswordInput}
                         onChange={this.handleChange}
                     />
