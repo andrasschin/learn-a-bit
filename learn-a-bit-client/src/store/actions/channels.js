@@ -15,6 +15,13 @@ function addChannel(channel){
     }
 }
 
+function removeChannel(id){
+    return {
+        type: REMOVE_CHANNEL,
+        id
+    }
+}
+
 export function getChannels(){
     return (dispatch, getState) => {
         let { currentUser } = getState();
@@ -47,6 +54,25 @@ export function postChannel(newChannel){
                 })
                 .catch(err => {
                     console.log("[ERROR] POSTCHANNEL: ", err.response.data.error.message)
+                    reject();
+                })
+        })
+    }
+}
+
+export function deleteChannel(id){
+    return (dispatch, getState) => {
+        let { currentUser } = getState();
+        const userId = currentUser.user.id;
+
+        return new Promise((resolve, reject) => {
+            axios.delete(`/api/users/${userId}/sources/youtube-channels/${id}`)
+                .then(() => {
+                    dispatch(removeChannel(id));
+                    resolve();
+                })
+                .catch(err => {
+                    console.log("[ERROR] DELETECHANNEL: ", err.response.data.error);
                     reject();
                 })
         })

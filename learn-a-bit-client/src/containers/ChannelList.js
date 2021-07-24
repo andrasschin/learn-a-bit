@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getChannels } from "../store/actions/channels";
+import { getChannels, deleteChannel } from "../store/actions/channels";
+
+import withAuth from "../hocs/withAuth";
 
 import ChannelItem from "../components/ChannelItem";
 import NewChannelForm from "./NewChannelForm";
@@ -28,6 +30,7 @@ class ChannelList extends Component {
                         key={channel._id}
                         channelId={channel.channelId}
                         channelName={channel.channelName}
+                        onDelete={this.handleDelete.bind(this, channel._id)}
                     />
                 )
             })
@@ -94,6 +97,10 @@ class ChannelList extends Component {
             }
         })
     }
+
+    handleDelete(id){
+        this.props.deleteChannel(id);
+    }
 }
 
 function mapStateToProps(state){
@@ -102,4 +109,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, { getChannels })(ChannelList);
+export default withAuth(connect(mapStateToProps, { getChannels, deleteChannel })(ChannelList));

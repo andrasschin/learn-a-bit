@@ -54,6 +54,11 @@ nav {
 
 .channel-list-item-remove-btn {
     font-weight: 100;
-    color: crimson;
+    /*color: crimson;*/
+    color: bisque;
     margin-left: 5px;
+}
+
+.channel-list-item:hover > .channel-list-item-remove-btn {
+    color: crimson;
 }

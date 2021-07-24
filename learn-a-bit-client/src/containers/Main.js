@@ -28,11 +28,7 @@ const Main = (props) => {
             />
             <Route
                 exact path="/channels"
-                render={() => {
-                    return (
-                        <ChannelList />
-                    )
-                }}
+                component={ChannelList}
             />
             <Route 
                 exact path="/signup" 
@@ -61,6 +57,7 @@ const Main = (props) => {
                     )
                 }}
             />
+            <Route path="*" component = {() => "404 NOT FOUND"}/>
         </Switch>
     );
 };
