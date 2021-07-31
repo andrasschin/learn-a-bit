@@ -13,10 +13,9 @@ export default (state=DEFAULT_STATE, action) => {
             return [...state, action.channel];
         
         case REMOVE_CHANNEL:
-            let newState = state.filter(channel => {
+            return state.channels.filter(channel => {
                 return channel._id !== action.id
             })
-            return newState;
 
         default:
             return state;

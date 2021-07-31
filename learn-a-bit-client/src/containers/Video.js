@@ -64,6 +64,7 @@ class Video extends Component {
         const channelId = this.props.currentChannel._id;
         const URL = `/api/users/${userId}/sources/youtube-channels/${channelId}/randomvideo`;
 
+        // Simulating the request for videos
         this.setState({
             isLoading: false,
             currentVideo: {
@@ -72,6 +73,8 @@ class Video extends Component {
                 videoTitle: "How To Terraform Venus (Quickly)"
             }
         })
+
+        // Commented out for dev code
         /* axios.get(URL)
             .then(res => {
                 let videos = res.data;

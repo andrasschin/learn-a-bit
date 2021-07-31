@@ -11,6 +11,7 @@ import ChannelList from "./ChannelList";
 import LoginForm from "../components/LoginForm";
 import SignupForm from "../components/SignupForm";
 import Video from "../containers/Video";
+import SummaryList from "./SummaryList";
 
 const Main = (props) => {
     const { authUser, signUpUser, currentUser, errors, addError, removeError } = props;
@@ -30,6 +31,10 @@ const Main = (props) => {
             <Route
                 exact path="/channels"
                 component={ChannelList}
+            />
+            <Route
+                exact path="/summaries"
+                component={SummaryList}
             />
             <Route
                 exact path="/video"

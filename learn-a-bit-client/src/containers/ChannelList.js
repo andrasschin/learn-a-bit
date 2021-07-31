@@ -100,7 +100,8 @@ class ChannelList extends Component {
         })
     }
 
-    handleDelete(id){
+    handleDelete(id, event){
+        event.stopPropagation();
         this.props.deleteChannel(id);
     }
 

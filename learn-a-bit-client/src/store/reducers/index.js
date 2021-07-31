@@ -4,12 +4,14 @@ import currentUser from "./currentUser";
 import errors from "./errors";
 import channels from "./channels";
 import currentChannel from "./currentChannel";
+import summaries from "./summaries";
 
 const appReducer = combineReducers({
     currentUser,
     channels,
     errors,
-    currentChannel
+    currentChannel,
+    summaries
 })
 
 const rootReducer = (state, action) => {
