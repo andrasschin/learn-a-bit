@@ -10,6 +10,7 @@ import Homepage from "../components/Homepage";
 import ChannelList from "./ChannelList";
 import LoginForm from "../components/LoginForm";
 import SignupForm from "../components/SignupForm";
+import Video from "../containers/Video";
 
 const Main = (props) => {
     const { authUser, signUpUser, currentUser, errors, addError, removeError } = props;
@@ -29,6 +30,16 @@ const Main = (props) => {
             <Route
                 exact path="/channels"
                 component={ChannelList}
+            />
+            <Route
+                exact path="/video"
+                render={() => {
+                    return (
+                        <Video
+                            currentUser={currentUser}
+                        />
+                    )
+                }}
             />
             <Route 
                 exact path="/signup" 
@@ -57,7 +68,7 @@ const Main = (props) => {
                     )
                 }}
             />
-            <Route path="*" component = {() => "404 NOT FOUND"}/>
+            <Route path="*" component={() => "404 NOT FOUND"}/>
         </Switch>
     );
 };

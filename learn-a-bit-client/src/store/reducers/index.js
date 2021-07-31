@@ -3,11 +3,13 @@ import { combineReducers } from "redux";
 import currentUser from "./currentUser";
 import errors from "./errors";
 import channels from "./channels";
+import currentChannel from "./currentChannel";
 
 const appReducer = combineReducers({
     currentUser,
     channels,
-    errors
+    errors,
+    currentChannel
 })
 
 const rootReducer = (state, action) => {

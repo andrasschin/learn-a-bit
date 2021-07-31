@@ -1,9 +1,12 @@
 import React from "react";
 
 const ChannelItem = props => {
-    const { id, channelId, channelName, onDelete} = props;
+    const { channelName, onDelete, onSetCurrentChannel } = props;
     return (
-        <div className="channel-list-item">
+        <div 
+            className="channel-list-item"
+            onClick={onSetCurrentChannel}
+        >
             {channelName} 
             <span 
                 className="channel-list-item-remove-btn"

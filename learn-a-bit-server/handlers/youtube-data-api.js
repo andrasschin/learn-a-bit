@@ -13,7 +13,7 @@ exports.getRandomVideo = async function (req, res, next) {
                     let mappedVideos = videos.map(video => {
                         return {
                             channelTitle: video.snippet.channelTitle,
-                            videotitle: video.snippet.title,
+                            videoTitle: video.snippet.title,
                             videoId: video.contentDetails.videoId,
                             videoPublishedAt: video.contentDetails.videoPublishedAt
                         }

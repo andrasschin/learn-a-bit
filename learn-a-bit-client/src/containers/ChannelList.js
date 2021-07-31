@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getChannels, deleteChannel } from "../store/actions/channels";
+import { setCurrentChannel } from "../store/actions/currentChannel";
 
 import withAuth from "../hocs/withAuth";
 
@@ -31,6 +32,7 @@ class ChannelList extends Component {
                         channelId={channel.channelId}
                         channelName={channel.channelName}
                         onDelete={this.handleDelete.bind(this, channel._id)}
+                        onSetCurrentChannel={this.handleSetCurrentChannel.bind(this, channel)}
                     />
                 )
             })
@@ -101,6 +103,11 @@ class ChannelList extends Component {
     handleDelete(id){
         this.props.deleteChannel(id);
     }
+
+    handleSetCurrentChannel(channel){
+        this.props.setCurrentChannel(channel);
+        this.props.history.push("/video");
+    }
 }
 
 function mapStateToProps(state){
@@ -109,4 +116,4 @@ function mapStateToProps(state){
     }
 }
 
-export default withAuth(connect(mapStateToProps, { getChannels, deleteChannel })(ChannelList));
+export default withAuth(connect(mapStateToProps, { getChannels, deleteChannel, setCurrentChannel })(ChannelList));
