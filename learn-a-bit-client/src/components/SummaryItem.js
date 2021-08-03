@@ -12,18 +12,41 @@ class SummaryItem extends Component {
     }
 
     render(){
-        const { source, title, text } = this.props;
+        const { source, title, text, onDelete } = this.props;
         const { showText } = this.state;
         return (
             <>
-                <div onClick={this.onTextToggle}>
-                    <p><b>{source}</b> - {title}</p>
+                <div
+                    className="summary-list-item"
+                    onClick={this.onTextToggle}
+                >
+                    <p>
+                        <span 
+                            className="summary-list-item-arrow"
+                            style={{ color: showText ? "orange" : null}}
+                        >
+                            { showText ? 
+                                <i className="fas fa-angle-up"></i>
+                                :
+                                <i className="fas fa-angle-down"></i>
+                            }
+                        </span>
                     
+                        <b>{source}</b> - {title}
+                        
+                        <span 
+                            className="summary-list-item-remove-btn"
+                            onClick={onDelete}
+                        >
+                            <i className="far fa-minus-square"></i>
+                        </span>
+                    </p>
+                    { showText ? 
+                        <p> {text} </p>
+                        : null
+                    }
                 </div>
-                { showText ? 
-                    <p> {text} </p>
-                    : null
-                }
+                
             </>
         )
     }

@@ -23,7 +23,7 @@ nav {
     padding-right: 20px;
 }
 
-/* ChannelList */
+/* Channel list */
 
 .channels-hero {
     margin: 10px 25px;
@@ -35,7 +35,7 @@ nav {
     /* background-color: darkcyan; */
 }
 
-/* ChannelItem */
+/* Channel item */
 
 .channel-list-item {
     text-transform: uppercase;
@@ -60,5 +60,44 @@ nav {
 }
 
 .channel-list-item:hover > .channel-list-item-remove-btn {
+    color: crimson;
+}
+
+/* Summary list */
+
+.summary-hero {
+    margin: 10px 25px;
+}
+
+/* Summary item */
+
+.summary-list-item {
+    font-size: 20px;
+    background-color: beige;
+    padding: 5px 10px;
+    margin: 10px 0;
+}
+
+.summary-list-item-arrow {
+    font-weight: 400;
+    margin-right: 10px;
+}
+
+.summary-list-item p {
+    margin: 0;
+    padding: 5px 0;
+}
+
+.summary-list-item-remove-btn {
+    margin-left: 10px;
+    color: beige;
+}
+
+.summary-list-item:hover {
+    background-color: lightskyblue;
+    cursor: pointer;
+}
+
+.summary-list-item:hover > p > .summary-list-item-remove-btn {
     color: crimson;
 }

@@ -13,7 +13,7 @@ export default (state=DEFAULT_STATE, action) => {
             return [...state, action.channel];
         
         case REMOVE_CHANNEL:
-            return state.channels.filter(channel => {
+            return state.filter(channel => {
                 return channel._id !== action.id
             })
 

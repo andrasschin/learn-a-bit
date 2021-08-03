@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getSummaries } from "../store/actions/summaries";
+import { getSummaries, deleteSummary } from "../store/actions/summaries";
 
 import withAuth from "../hocs/withAuth";
 
@@ -18,7 +18,7 @@ class SummaryList extends Component {
     render(){
         const { summaries } = this.props;
         const { isLoading } = this.state;
-        console.log(summaries);
+
         if (Array.isArray(summaries) && !isLoading) {
             const summaryList = summaries.map(summary => {
                 return (
@@ -27,12 +27,13 @@ class SummaryList extends Component {
                         source={summary.source}
                         title={summary.title}
                         text={summary.text}
+                        onDelete={this.handleDelete.bind(this, summary._id)}
                     />
                 )
             })
 
             return (
-                <div>
+                <div className="summary-hero">
                     <h2>Here are your summaries!</h2>
                     {summaryList}
                 </div>
@@ -50,6 +51,11 @@ class SummaryList extends Component {
                 isLoading: false
             }))
     }
+
+    handleDelete(id, event){
+        event.stopPropagation();
+        this.props.deleteSummary(id);
+    }
 }
 
 function mapStateToProps(state){
@@ -58,4 +64,4 @@ function mapStateToProps(state){
     }
 }
 
-export default withAuth(connect(mapStateToProps, { getSummaries })(SummaryList));
+export default withAuth(connect(mapStateToProps, { getSummaries, deleteSummary })(SummaryList));

@@ -30,12 +30,30 @@ export function getSummaries(){
         return new Promise((resolve, reject) => {
             axios.get(`/api/users/${id}/summaries`)
                 .then(res => {
-
                     dispatch(loadSummaries(res.data))
                     resolve();
                 })
                 .catch(err => {
                     console.log("[ERROR] GETSUMMARIES: ", err);
+                    reject();
+                })
+        })
+    }
+}
+
+export function deleteSummary(id){
+    return (dispatch, getState) => {
+        const { currentUser } = getState();
+        const userId = currentUser.user.id;
+        
+        return new Promise((resolve, reject) => {
+            axios.delete(`/api/users/${userId}/summaries/${id}`)
+                .then(() => {
+                    dispatch(removeSummary(id));
+                    resolve();
+                })
+                .catch(err => {
+                    console.log("[ERROR] DELETESUMMARY: ", err);
                     reject();
                 })
         })

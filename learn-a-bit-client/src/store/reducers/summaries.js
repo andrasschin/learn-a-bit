@@ -13,7 +13,7 @@ export default (state=DEFAULT_STATE, action) => {
             return [...state, action.summary];
 
         case REMOVE_SUMMARY:
-            return state.summaries.filter(summary => {
+            return state.filter(summary => {
                 return summary._id !== action.id
             });
         
