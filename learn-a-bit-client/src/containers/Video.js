@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router";
 
 import withAuth from "../hocs/withAuth";
+import NewSummaryForm from "./NewSummaryForm";
 
 import axios from "axios";
 
@@ -28,18 +29,24 @@ class Video extends Component {
 
         if (!isLoading) {
             return (
-                <div>
-                    <h1>{currentVideo.channelTitle}</h1>
-                    <h4>presents</h4>
-                    <h3>{currentVideo.videoTitle}</h3>
-                    <p><i>{currentVideo.videoPublishedAt}</i></p>
-                    <iframe
-                        width="800"
-                        height="450"
-                        src={videoURL}
-                    > 
-                    </iframe>
-                </div>
+                <>
+                    <div>
+                        <h1>{currentVideo.channelTitle}</h1>
+                        <h4><i>presents</i></h4>
+                        <h3>{currentVideo.videoTitle}</h3>
+                        <p><i>{currentVideo.videoPublishedAt}</i></p>
+                        <iframe
+                            width="800"
+                            height="450"
+                            src={videoURL}
+                        > 
+                        </iframe>
+                    </div>
+                    <NewSummaryForm
+                        sourceChannel={currentVideo.channelTitle}
+                        videoTitle={currentVideo.videoTitle}
+                    />
+                </>
             )
         } 
         else if (!isLoading && Boolean(Object.keys(currentVideo).length)) {
@@ -64,17 +71,21 @@ class Video extends Component {
         const channelId = this.props.currentChannel._id;
         const URL = `/api/users/${userId}/sources/youtube-channels/${channelId}/randomvideo`;
 
-        // Simulating the request for videos
-        this.setState({
-            isLoading: false,
-            currentVideo: {
-                channelTitle: "Kurzgesagt – In a Nutshell",
-                videoId: "G-WO-z-QuWI",
-                videoTitle: "How To Terraform Venus (Quickly)"
+        // Development version
+        //  -> Simulating the request for videos
+        this.setState(previousState => {
+            return {
+                ...previousState,
+                isLoading: false,
+                currentVideo: {
+                    channelTitle: "Kurzgesagt – In a Nutshell",
+                    videoId: "G-WO-z-QuWI",
+                    videoTitle: "How To Terraform Venus (Quickly)"
+                }
             }
         })
 
-        // Commented out for dev code
+        // Production version
         /* axios.get(URL)
             .then(res => {
                 let videos = res.data;

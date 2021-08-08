@@ -52,7 +52,12 @@ class SignupForm extends Component {
                         onChange={this.handleChange}
                     />
         
-                    <button type="submit">Sign up!</button>
+                    <button 
+                        type="submit"
+                        className="btn btn-info"
+                    >
+                        Sign up!
+                    </button>
                 </form>
                 { errors.message ? 
                     <div className="alert alert-danger">{errors.message}</div>

@@ -18,9 +18,10 @@ class SummaryItem extends Component {
             <>
                 <div
                     className="summary-list-item"
-                    onClick={this.onTextToggle}
                 >
-                    <p>
+                    <p
+                        onClick={this.onTextToggle}
+                    >
                         <span 
                             className="summary-list-item-arrow"
                             style={{ color: showText ? "orange" : null}}
@@ -42,7 +43,7 @@ class SummaryItem extends Component {
                         </span>
                     </p>
                     { showText ? 
-                        <p> {text} </p>
+                        <p className="summary-list-item-body"> {text} </p>
                         : null
                     }
                 </div>

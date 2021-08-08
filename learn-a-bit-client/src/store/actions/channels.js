@@ -25,17 +25,17 @@ function removeChannel(id){
 export function getChannels(){
     return (dispatch, getState) => {
         let { currentUser } = getState();
-        const id = currentUser.user.id;
+        const userId = currentUser.user.id;
         
         return new Promise((resolve, reject) => {
-            axios.get(`/api/users/${id}/sources/youtube-channels`)
+            axios.get(`/api/users/${userId}/sources/youtube-channels`)
                 .then(res => {
                     dispatch(loadChannels(res.data));
                     resolve();
                 })
                 .catch(err => {
                     console.log("[ERROR] GETCHANNELS: ", err.response.data.error.message)
-                    reject();
+                    reject(err);
                 })
         })
     }
@@ -44,10 +44,10 @@ export function getChannels(){
 export function postChannel(newChannel){
     return (dispatch, getState) => {
         let { currentUser } = getState();
-        const id = currentUser.user.id;
+        const userId = currentUser.user.id;
         
         return new Promise((resolve, reject) => {
-            axios.post(`/api/users/${id}/sources/youtube-channels`, newChannel)
+            axios.post(`/api/users/${userId}/sources/youtube-channels`, newChannel)
                 .then(res =>{
                     dispatch(addChannel(res.data));
                     resolve();
@@ -60,15 +60,15 @@ export function postChannel(newChannel){
     }
 }
 
-export function deleteChannel(id){
+export function deleteChannel(channelId){
     return (dispatch, getState) => {
         let { currentUser } = getState();
         const userId = currentUser.user.id;
 
         return new Promise((resolve, reject) => {
-            axios.delete(`/api/users/${userId}/sources/youtube-channels/${id}`)
+            axios.delete(`/api/users/${userId}/sources/youtube-channels/${channelId}`)
                 .then(() => {
-                    dispatch(removeChannel(id));
+                    dispatch(removeChannel(channelId));
                     resolve();
                 })
                 .catch(err => {

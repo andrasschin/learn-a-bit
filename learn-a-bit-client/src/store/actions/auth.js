@@ -19,13 +19,14 @@ export function setAuthorizationToken(token) {
     if (token) {
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     } else {
-        delete axios.defaults.headers.common;
+        delete axios.defaults.headers.common["Authorization"];
     }
 }
 
 export function logoutUser(){
     return dispatch => {
         localStorage.clear();
+        setAuthorizationToken(false);
         dispatch(logout());
     }
 }
@@ -45,6 +46,7 @@ export function authUser(userData){
                 })
                 .then((userData) => {
                     localStorage.setItem("jwtToken", userData.token);
+                    setAuthorizationToken(userData.token);
                     dispatch(setCurrentUser(userData));
                     dispatch(removeError());
                     resolve();

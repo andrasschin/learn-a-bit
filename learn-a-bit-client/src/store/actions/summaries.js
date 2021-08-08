@@ -25,10 +25,10 @@ function removeSummary(id){
 export function getSummaries(){
     return (dispatch, getState) => {
         const { currentUser } = getState();
-        const id = currentUser.user.id;
+        const userId = currentUser.user.id;
 
         return new Promise((resolve, reject) => {
-            axios.get(`/api/users/${id}/summaries`)
+            axios.get(`/api/users/${userId}/summaries`)
                 .then(res => {
                     dispatch(loadSummaries(res.data))
                     resolve();
@@ -41,15 +41,34 @@ export function getSummaries(){
     }
 }
 
-export function deleteSummary(id){
+export function postSummary(newSummary){
+    return (dispatch, getState) => {
+        const { currentUser } = getState();
+        const userId = currentUser.user.id;
+
+        return new Promise((resolve, reject) => {
+            axios.post(`/api/users/${userId}/summaries`, newSummary)
+                .then(res => {
+                    dispatch(addSummary(res.data));
+                    resolve();
+                })
+                .catch(err => {
+                    console.log("[ERROR] POSTSUMMARY: ", err.response.data.error.message);
+                    reject();
+                })
+        })
+    }
+}
+
+export function deleteSummary(summaryId){
     return (dispatch, getState) => {
         const { currentUser } = getState();
         const userId = currentUser.user.id;
         
         return new Promise((resolve, reject) => {
-            axios.delete(`/api/users/${userId}/summaries/${id}`)
+            axios.delete(`/api/users/${userId}/summaries/${summaryId}`)
                 .then(() => {
-                    dispatch(removeSummary(id));
+                    dispatch(removeSummary(summaryId));
                     resolve();
                 })
                 .catch(err => {

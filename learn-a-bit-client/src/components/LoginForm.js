@@ -42,7 +42,12 @@ class LoginForm extends Component {
                         onChange={this.handleChange}
                     />
                     
-                    <button type="submit">Login</button>
+                    <button 
+                        type="submit"
+                        className="btn btn-success"
+                    >
+                        Login
+                    </button>
                 </form>
                 { errors.message ? 
                     <div className="alert alert-danger">{errors.message}</div>

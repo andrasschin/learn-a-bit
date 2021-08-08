@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -88,6 +90,13 @@ nav {
     padding: 5px 0;
 }
 
+.summary-list-item .summary-list-item-body {
+    text-align: justify;
+    padding: 0 30px;
+    text-indent: 1%;
+    white-space: pre-line;
+}
+
 .summary-list-item-remove-btn {
     margin-left: 10px;
     color: beige;
@@ -100,4 +109,20 @@ nav {
 
 .summary-list-item:hover > p > .summary-list-item-remove-btn {
     color: crimson;
+}
+
+/* Video */
+
+.summary-form {
+    width: 85%;
+    margin: 40px auto;
+    font-size: 20px;
+}
+
+.summary-form h3 {
+    text-align: center;
+}
+
+.summary-form input, .summary-form textarea, .summary-form button {
+    font-size: 18px;
 }
