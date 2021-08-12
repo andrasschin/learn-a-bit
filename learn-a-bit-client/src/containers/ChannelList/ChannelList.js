@@ -1,12 +1,13 @@
 import React, { Component } from "react";
+import "./ChannelList.css";
 import { connect } from "react-redux";
-import { getChannels, deleteChannel } from "../store/actions/channels";
-import { setCurrentChannel } from "../store/actions/currentChannel";
+import { getChannels, deleteChannel } from "../../store/actions/channels";
+import { setCurrentChannel } from "../../store/actions/currentChannel";
 
-import withAuth from "../hocs/withAuth";
+import withAuth from "../../hocs/withAuth";
 
-import ChannelItem from "../components/ChannelItem";
-import NewChannelForm from "./NewChannelForm";
+import ChannelItem from "../../components/ChannelItem/ChannelItem";
+import NewChannelForm from "../NewChannelForm/NewChannelForm";
 
 class ChannelList extends Component {
     constructor(props){
@@ -46,27 +47,36 @@ class ChannelList extends Component {
                         : 
                         <>
                             <div className="channels-hero">
-                                <h2>We have your channels!</h2>
                                 { showForm ?
                                 <>
-                                    <button 
-                                        className="btn btn-outline-danger"
-                                        onClick={this.onFormToggle}    
-                                    >
+                                    <div>
+                                        <button 
+                                            className="btn-switch btn-close-form"
+                                            onClick={this.onFormToggle}    
+                                        >
                                             <i className="fas fa-minus-circle"></i> Close form
-                                    </button>
+                                        </button>
+                                    </div>
+
+                                    <h2>Add a channel</h2>
+                                    
                                     <NewChannelForm 
                                         onFormToggle={this.onFormToggle}
                                     />
                                 </>
                                 : 
                                 <>
-                                    <button 
-                                        className="btn btn-outline-warning"
-                                        onClick={this.onFormToggle}    
-                                    >
+                                    <div>
+                                        <button 
+                                            className="btn-switch btn-add"
+                                            onClick={this.onFormToggle}    
+                                        >
                                             <i className="fas fa-plus"></i> Add a channel
-                                    </button>
+                                        </button>
+                                    </div>
+                                    
+                                    <h2>Your channels</h2>
+
                                     <div className="channel-list">
                                         {channelList}
                                     </div>

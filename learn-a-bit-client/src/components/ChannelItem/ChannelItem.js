@@ -1,4 +1,5 @@
 import React from "react";
+import "./ChannelItem.css";
 
 const ChannelItem = props => {
     const { channelName, onDelete, onSetCurrentChannel } = props;

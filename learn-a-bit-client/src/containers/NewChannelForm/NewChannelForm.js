@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import "./NewChannelForm.css";
 import { connect } from 'react-redux';
-import { postChannel } from '../store/actions/channels';
+import { postChannel } from '../../store/actions/channels';
 
 class NewChannelForm extends Component {
     constructor(props){
@@ -17,13 +18,17 @@ class NewChannelForm extends Component {
     render(){
         const { channelNameInput, channelIdInput } = this.state;
         return (
-            <form onSubmit={this.handleNewChannel}>
+            <form 
+                onSubmit={this.handleNewChannel}
+                autocomplete="off"
+                className="new-channel-form"
+            >
                 <div>
                     <label 
                         className="form-label"
                         htmlFor="channelNameInput"
                     >
-                        Name
+                        Name:
                     </label>
                     <input 
                         className="form-control"
@@ -39,7 +44,7 @@ class NewChannelForm extends Component {
                         className="form-label"
                         htmlFor="channelIdInput"
                     >
-                        ID
+                        The channel's Youtube ID:
                     </label>
                     <input
                         className="form-control"
@@ -50,7 +55,13 @@ class NewChannelForm extends Component {
                         onChange={this.handleChange}
                     />
                 </div>
-                <button className="btn btn-primary">Save</button>
+                <div>
+                    <button 
+                        className="btn submit-btn"
+                    >
+                        Save
+                    </button>
+                </div>
             </form>
         )
     }

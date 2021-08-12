@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
@@ -13,7 +13,7 @@ class Navbar extends Component {
     render(){
         const { currentUser } = this.props;
         return (
-            <nav className="navbar navbar-expand navbar-dark bg-dark">
+            <nav className="navbar navbar-expand navbar-dark bg-dark py-3">
                 <Link to="/" className="navbar-brand">Learn a Bit</Link>
                 { !currentUser.isAuthenticated ? 
                     <div className="ms-auto">

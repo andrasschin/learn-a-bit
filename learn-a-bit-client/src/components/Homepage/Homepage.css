@@ -1,0 +1,104 @@
+.home-hero {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-image: url("../../images/home-bg.jpg");
+    background-position: center center;
+    background-size: cover;
+    opacity: 0.9;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-hero .home-item {
+    opacity: 1;
+    color: orangered;
+    background-color: rgba(245, 245, 245, 0.15);
+    font-size: 1.3rem;
+    padding: 20px 10px;
+
+    text-shadow: 2px 2px 2px black;
+}
+
+.home-hero .home-item h1, .home-hero .home-item h3, .home-hero .home-item p {
+    position: relative;
+    animation: slide-up 1.5s 0s forwards;
+}
+
+.home-hero .home-item h1 {
+    font-size: 4.5rem;
+}
+
+.home-hero .home-item h1 b {
+    color: orange;
+}
+
+.home-hero .home-item h3 {
+    font-size: 3rem;
+}
+
+.home-hero .home-item p {
+    font-size: 1.5rem;
+}
+
+.home-hero .home-item button {
+    display: block;
+    position: relative;
+    margin: 15px auto;
+    opacity: 0;
+}
+
+.btn-signup {
+    background-color: #157A6E;
+    color: white;
+    font-size: inherit;
+
+    animation: slide-from-left 0.3s 1.5s forwards;
+}
+
+.btn-labq {
+    background-color:mediumvioletred;
+    color: white;
+    font-size: inherit;
+
+    animation: slide-from-left 0.3s 1.5s forwards;
+}
+
+.btn-waout {
+    background-color: lightseagreen;
+    color: white;
+    font-size: inherit;
+
+    animation: slide-from-left 0.3s 1.8s forwards;
+}
+
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        top: 50px;
+    }
+
+    to {
+        opacity: 1;
+        top: 0;
+    }
+}
+
+@keyframes slide-from-left {
+    from {
+        opacity: 0;
+        left: -200px;
+    }
+
+    to {
+        opacity: 1;
+        left: 0;
+    }
+}

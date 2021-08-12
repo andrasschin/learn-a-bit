@@ -1,12 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
+/* Global styles */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
 body {
-  margin: 0;
-  font-family: "Poppins", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: "Poppins",  sans-serif;
 }
 
 a {
@@ -23,47 +30,79 @@ a:not(.navbar-brand):hover {
 nav {
     padding-left: 5px;
     padding-right: 20px;
-}
-
-/* Channel list */
-
-.channels-hero {
-    margin: 10px 25px;
-}
-
-.channel-list {
-    margin-top: 30px;
-    display: flex;
-    /* background-color: darkcyan; */
-}
-
-/* Channel item */
-
-.channel-list-item {
-    text-transform: uppercase;
     font-size: 20px;
-    background-color: bisque;
-    padding: 5px 10px;
-    font-weight: 600;
-    margin: 0 15px;
 }
 
-.channel-list-item:hover {
+.navbar-brand {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+input, textarea {
+    display: block;
+}
+
+h1, h2, h3, h4, p, div {
+    text-align: center;
+}
+
+button {
+    border: none !important;
+}
+
+/* -- Common -- */
+
+/* - Auth - */
+
+.auth-hero {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-form {
+    margin: auto;
+    font-size: 1.3rem;
+    background-color: #212529;
     color: white;
-    background-color: rgb(64, 204, 162);
-    cursor: pointer;
+    padding: 10px 40px 40px 40px;
+    border-radius: 15px;
 }
 
-.channel-list-item-remove-btn {
-    font-weight: 100;
-    /*color: crimson;*/
-    color: bisque;
-    margin-left: 5px;
+.auth-form div h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2rem;
+    letter-spacing: 8px;
 }
 
-.channel-list-item:hover > .channel-list-item-remove-btn {
-    color: crimson;
+.auth-form div {
+    margin-top: 30px;
+    text-align: center;
 }
+
+.auth-form div .form-control {
+    font-size: 1.3rem;
+}
+
+.auth-form .submit-btn {
+    font-size: 1.3rem;
+    margin: 15px auto 5px auto;
+    padding: 10px 50px;
+    color: white;
+
+    transition: background-color 0.5s;
+}
+
+
 
 /* Summary list */
 

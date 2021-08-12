@@ -9,10 +9,10 @@ import Main from './Main';
 const App = (props) => {
     const { currentUser, history } = props;
     return (
-        <div>
+        <>
             <Navbar history={history} currentUser={currentUser} />
             <Main />
-        </div>
+        </>
     )
 }
 

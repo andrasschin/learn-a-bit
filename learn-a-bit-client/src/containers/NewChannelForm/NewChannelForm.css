@@ -1,0 +1,24 @@
+.new-channel-form {
+    color: white;
+    width: 60%;
+    margin: auto;
+}
+
+.new-channel-form div {
+    margin-top: 30px;
+}
+
+.new-channel-form input {
+    font-size: 1.3rem;
+}
+
+.new-channel-form .submit-btn {
+    background-color: teal;
+    font-size: 1.3rem;
+    color: white;
+    padding: 10px 35px;
+}
+
+.new-channel-form .submit-btn:hover {
+    background-color: rgb(1, 105, 105);
+}

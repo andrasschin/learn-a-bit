@@ -6,10 +6,10 @@ import { connect } from "react-redux";
 import { authUser, signUpUser } from "../store/actions/auth";
 import { addError, removeError } from "../store/actions/errors";
 
-import Homepage from "../components/Homepage";
-import ChannelList from "./ChannelList";
-import LoginForm from "../components/LoginForm";
-import SignupForm from "../components/SignupForm";
+import Homepage from "../components/Homepage/Homepage";
+import ChannelList from "./ChannelList/ChannelList";
+import LoginForm from "../components/LoginForm/LoginForm";
+import SignupForm from "../components/SignupForm/SignupForm";
 import Video from "../containers/Video";
 import SummaryList from "./SummaryList";
 
