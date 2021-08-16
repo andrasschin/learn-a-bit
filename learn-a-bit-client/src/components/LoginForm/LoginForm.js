@@ -26,7 +26,7 @@ class LoginForm extends Component {
             <div className="container-fluid auth-hero login-hero">
                 
                 <form
-                    autocomplete="off"
+                    autoComplete="off"
                     className="auth-form"
                     onSubmit={this.handleSubmit}
                 >

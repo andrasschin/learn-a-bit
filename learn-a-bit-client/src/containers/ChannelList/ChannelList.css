@@ -1,26 +1,12 @@
-body {
+.channels-hero {
     background-color: #118AB2;
 }
 
-.channels-hero {
-    background-color: #212529;
-    width: 50%;
-    margin: 30px auto;
-    font-size: 1.5rem;
-    padding: 30px 30px;
-    border-radius: 10px;
+.container-channels h2 {
+    margin-top: 30px;
 }
 
-.channels-hero h2 {
-    color: white;
-    padding: 35px 0;
-    margin-top: 30px;
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
-}
-
-.channel-list {
-    margin-top: 30px;
+.list-channel-items {
     display: flex;
     flex-wrap: wrap;
 }
@@ -43,3 +29,4 @@ body {
 .btn-close-form:hover {
     color: #D36060;
 }
+

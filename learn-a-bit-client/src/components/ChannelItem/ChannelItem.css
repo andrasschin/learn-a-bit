@@ -1,28 +1,28 @@
-.channel-list-item {
+.list-channel-item {
     text-transform: uppercase;
     font-size: 1.5rem;
     letter-spacing: 2px;
-    background-color: #AED4E6;
+    background-color: #5a9cbb;
     padding: 5px 10px;
     font-weight: 600;
-    margin: 0 15px;
+    margin: 10px 15px;
     border-radius: 6px;
 
     transition: background-color 0.15s, color 0.15s;
 }
 
-.channel-list-item:hover {
+.list-channel-item:hover {
     color: white;
     background-color: #D56F3E;
     cursor: pointer;
 }
 
-.channel-list-item-remove-btn {
+.list-channel-item-remove-btn {
     display: none;
     margin-left: 5px;
     color: crimson;
 }
 
-.channel-list-item:hover > .channel-list-item-remove-btn {
+.list-channel-item:hover > .list-channel-item-remove-btn {
     display: inline;
 }

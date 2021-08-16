@@ -38,68 +38,83 @@ class ChannelList extends Component {
                 )
             })
             return (
-                <>
-                    { channelList.length === 0 ? 
-                        <>
-                            <p>You don't have any channels :(</p>
-                            <p>Make sure to add some!</p>
-                        </>
+                <div className="hero-default channels-hero">
+                    <div className="container-default container-channels">
+                        { showForm ?
+                            <>
+                                <div>
+                                    <button 
+                                        className="btn-switch btn-close-form"
+                                        onClick={this.onFormToggle}    
+                                    >
+                                        <i className="fas fa-minus-circle"></i> Close form
+                                    </button>
+                                </div>
+
+                                <h2>Add a channel</h2>
+                                
+                                <NewChannelForm 
+                                    onFormToggle={this.onFormToggle}
+                                />
+                            </>
                         : 
-                        <>
-                            <div className="channels-hero">
-                                { showForm ?
-                                <>
-                                    <div>
-                                        <button 
-                                            className="btn-switch btn-close-form"
-                                            onClick={this.onFormToggle}    
-                                        >
-                                            <i className="fas fa-minus-circle"></i> Close form
-                                        </button>
-                                    </div>
+                            <>
+                                <div>
+                                    <button 
+                                        className="btn-switch btn-add"
+                                        onClick={this.onFormToggle}    
+                                    >
+                                        <i className="fas fa-plus"></i> Add a channel
+                                    </button>
+                                </div>
+                                
+                                <h2>Your channels</h2>
 
-                                    <h2>Add a channel</h2>
-                                    
-                                    <NewChannelForm 
-                                        onFormToggle={this.onFormToggle}
-                                    />
-                                </>
-                                : 
-                                <>
-                                    <div>
-                                        <button 
-                                            className="btn-switch btn-add"
-                                            onClick={this.onFormToggle}    
-                                        >
-                                            <i className="fas fa-plus"></i> Add a channel
-                                        </button>
-                                    </div>
-                                    
-                                    <h2>Your channels</h2>
-
-                                    <div className="channel-list">
-                                        {channelList}
-                                    </div>
-                                </>
+                                { channelList.length === 0 ? 
+                                    <div className="list-items">
+                                        <p>You don't have any channels yet. :(</p>
+                                    </div> 
+                                    :
+                                    <div className="list-items list-channel-items">
+                                    {channelList}
+                                </div>   
                                 }
-                            </div>
-                            
-                        </>
-                    }
-                </>
+                            </>
+                        }
+                    </div>
+                </div>
             )
         }
         else {
             return (
-                <p>Loading your channels...</p>
+                <div className="hero-default channels-hero">
+                    <div className="container-default container-channels">
+                        <div>
+                            <button 
+                                className="btn-switch btn-add"
+                                onClick={this.onFormToggle}    
+                            >
+                                <i className="fas fa-plus"></i> Add a channel
+                            </button>
+                            
+                            <h2>Your channels</h2>
+
+                            <div className="loading-icon-container">
+                                <div className="loading-icon"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             )
         }
     }
 
     componentDidMount(){
-        this.props.getChannels()
+        setTimeout(() => {
+            this.props.getChannels()
             .then(this.setState({ isLoading: false }))
             .catch(err => console.log(err));
+        }, 1500);
     }
 
     onFormToggle(){

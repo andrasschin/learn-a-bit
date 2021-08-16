@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./SummaryItem.css";
 
 class SummaryItem extends Component {
     constructor(props){
@@ -12,18 +13,26 @@ class SummaryItem extends Component {
     }
 
     render(){
-        const { source, title, text, onDelete } = this.props;
+        const { source, title, text, createdAt, onDelete } = this.props;
         const { showText } = this.state;
+
+        let date = new Date(createdAt);
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        /* let createdAtText = `${year}-${month}-${day}`; */
+        let createdAtText = date.toLocaleDateString();
+        
         return (
             <>
                 <div
-                    className="summary-list-item"
+                    className="list-summary-item"
                 >
                     <p
                         onClick={this.onTextToggle}
                     >
                         <span 
-                            className="summary-list-item-arrow"
+                            className="list-summary-item-arrow"
                             style={{ color: showText ? "orange" : null}}
                         >
                             { showText ? 
@@ -33,21 +42,25 @@ class SummaryItem extends Component {
                             }
                         </span>
                     
-                        <b>{source}</b> - {title}
+                        <b>{title}</b>
                         
                         <span 
-                            className="summary-list-item-remove-btn"
+                            className="list-summary-item-remove-btn"
                             onClick={onDelete}
                         >
                             <i className="far fa-minus-square"></i>
                         </span>
                     </p>
                     { showText ? 
-                        <p className="summary-list-item-body"> {text} </p>
+                        <div className="list-summary-item-body">
+                            <p>{text}</p>
+                            <hr/>
+                            <p>Based on a video from <b>{source}</b></p>
+                            <p><i>Written on {createdAtText}</i></p>
+                        </div>
                         : null
                     }
                 </div>
-                
             </>
         )
     }

@@ -20,10 +20,9 @@
 .home-hero .home-item {
     opacity: 1;
     color: orangered;
-    background-color: rgba(245, 245, 245, 0.15);
+    background-color: rgba(60, 60, 60, 0.65);
     font-size: 1.3rem;
     padding: 20px 10px;
-
     text-shadow: 2px 2px 2px black;
 }
 

@@ -20,7 +20,7 @@ class NewChannelForm extends Component {
         return (
             <form 
                 onSubmit={this.handleNewChannel}
-                autocomplete="off"
+                autoComplete="off"
                 className="new-channel-form"
             >
                 <div>

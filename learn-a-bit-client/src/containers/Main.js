@@ -11,7 +11,7 @@ import ChannelList from "./ChannelList/ChannelList";
 import LoginForm from "../components/LoginForm/LoginForm";
 import SignupForm from "../components/SignupForm/SignupForm";
 import Video from "../containers/Video";
-import SummaryList from "./SummaryList";
+import SummaryList from "./SummaryList/SummaryList";
 
 const Main = (props) => {
     const { authUser, signUpUser, currentUser, errors, addError, removeError } = props;
