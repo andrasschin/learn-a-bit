@@ -189,18 +189,17 @@ nav {
     transition: background-color 0.5s;
 }
 
-/* Video */
+/* Button */
 
-.summary-form {
-    width: 85%;
-    margin: 40px auto;
-    font-size: 20px;
+.btn-submit-default {
+    background-color: teal;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    color: white;
+    padding: 10px 35px;
+    transition: background-color 0.5s;
 }
 
-.summary-form h3 {
-    text-align: center;
-}
-
-.summary-form input, .summary-form textarea, .summary-form button {
-    font-size: 18px;
+.btn-submit-default:hover {
+    background-color: rgb(1, 105, 105);
 }

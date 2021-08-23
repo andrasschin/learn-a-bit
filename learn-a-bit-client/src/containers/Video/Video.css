@@ -1,0 +1,22 @@
+.hero-default {
+    background-color: cadetblue;
+}
+
+.container-video {
+    color: white;
+}
+
+.container-video iframe {
+    width: 80%;
+    height: 450px;
+}
+
+@media screen and (max-width: 1200px) {
+    .container-video iframe {
+        width: 98%;
+    }
+}
+
+.container-video h1, .container-video h3, .container-video h4 {
+    margin-bottom: 20px;
+}

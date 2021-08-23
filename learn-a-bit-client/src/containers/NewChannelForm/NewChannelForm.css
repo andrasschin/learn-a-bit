@@ -12,17 +12,6 @@
     font-size: 1.3rem;
 }
 
-.new-channel-form .submit-btn {
-    background-color: teal;
-    font-size: 1.3rem;
-    color: white;
-    padding: 10px 35px;
-}
-
-.new-channel-form .submit-btn:hover {
-    background-color: rgb(1, 105, 105);
-}
-
 @media screen and (max-width: 1200px) {
     .new-channel-form {
         width: 100%;

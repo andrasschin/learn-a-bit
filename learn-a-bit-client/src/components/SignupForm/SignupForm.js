@@ -24,8 +24,9 @@ class SignupForm extends Component {
         })
 
         return (
-            <div className="container-fluid auth-hero signup-hero">
+            <div className="container-fluid auth-hero hero-signup">
                 <form
+                    autoComplete="off"
                     className="auth-form"
                     onSubmit={this.handleSubmit}
                 >

@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import "./NewSummaryForm.css";
 
 import { connect } from "react-redux";
-import withAuth from "../hocs/withAuth";
-import { postSummary } from "../store/actions/summaries";
+import withAuth from "../../hocs/withAuth";
+import { postSummary } from "../../store/actions/summaries";
+import { addError, removeError } from "../../store/actions/errors";
+import { withRouter } from "react-router-dom";
 
 class NewSummaryForm extends Component {
     constructor(props){
@@ -15,11 +18,16 @@ class NewSummaryForm extends Component {
 
         this.handleNewSummary = this.handleNewSummary.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.checkInputs = this.checkInputs.bind(this);
     }
 
     render(){
         const { titleInput, textInput } = this.state;
-        const { sourceChannel, videoTitle } = this.props;
+        const { sourceChannel, videoTitle, history, errors, addError, removeError } = this.props;
+
+        history.listen(() => {
+            removeError();
+        })
 
         return (
             <form 
@@ -97,14 +105,21 @@ class NewSummaryForm extends Component {
                     <div className="form-text">Don't spare any words! :)</div>
                 </div>
 
-                <div className="text-end">
+                <div className="text-center">
                     <button 
                         type="submit"
-                        className="btn btn-success"
+                        className="btn-submit-default"
                     >
                         I've just learned something!
                     </button>
                 </div>
+
+                { errors.message ? 
+                    <div className="alert alert-danger text-center mt-4">
+                        {errors.message}
+                    </div> 
+                    : null
+                }
             </form>
         )
     }
@@ -112,13 +127,15 @@ class NewSummaryForm extends Component {
     handleNewSummary(e){
         e.preventDefault();
 
-        const { titleInput, textInput } = this.state;
-        const { sourceChannel } = this.props;
-        this.props.postSummary({
-            source: sourceChannel,
-            title: titleInput,
-            text: textInput
-        });
+        if (this.checkInputs()){
+            const { titleInput, textInput } = this.state;
+            const { sourceChannel } = this.props;
+            this.props.postSummary({
+                source: sourceChannel,
+                title: titleInput,
+                text: textInput
+            });
+        }
     }
 
     handleChange(e){
@@ -126,6 +143,21 @@ class NewSummaryForm extends Component {
             [e.target.name]: e.target.value
         })
     }
+
+    checkInputs(){
+        const { titleInput, textInput } = this.state;
+        if (titleInput === "" || textInput === ""){
+            this.props.addError("Please fill out all inputs.");
+            return false;
+        }
+        return true;
+    }
 }
 
-export default withAuth(connect(null, { postSummary })(NewSummaryForm));
+function mapStateToProps(state) {
+    return {
+        errors: state.errors
+    }
+}
+
+export default withAuth(withRouter(connect(mapStateToProps, { postSummary, addError, removeError })(NewSummaryForm)));

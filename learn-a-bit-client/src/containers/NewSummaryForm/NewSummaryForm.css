@@ -1,0 +1,18 @@
+.summary-form {
+    width: 85%;
+    margin: 40px auto;
+    font-size: 1.3rem;
+}
+
+.summary-form div {
+    text-align: left;
+}
+
+.summary-form h3 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.summary-form input, .summary-form textarea, .summary-form button {
+    font-size: 1.2rem;
+}

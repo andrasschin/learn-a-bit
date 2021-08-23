@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import "./NewChannelForm.css";
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+
 import { postChannel } from '../../store/actions/channels';
+import { addError, removeError } from "../../store/actions/errors";
 
 class NewChannelForm extends Component {
     constructor(props){
@@ -13,10 +16,17 @@ class NewChannelForm extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleNewChannel = this.handleNewChannel.bind(this);
+        this.checkInputs = this.checkInputs.bind(this);
     }
 
     render(){
         const { channelNameInput, channelIdInput } = this.state;
+        const { history, errors, removeError, addError } = this.props;
+
+        history.listen(() => {
+            removeError();
+        })
+
         return (
             <form 
                 onSubmit={this.handleNewChannel}
@@ -57,23 +67,28 @@ class NewChannelForm extends Component {
                 </div>
                 <div>
                     <button 
-                        className="btn submit-btn"
+                        className="btn-submit-default"
                     >
                         Save
                     </button>
                 </div>
+                { errors.message ? 
+                    <div className="alert alert-danger">{errors.message}</div> 
+                    : null
+                }
             </form>
         )
     }
 
     handleNewChannel(e){
         e.preventDefault();
-        this.props.postChannel({
-            channelName: this.state.channelNameInput,
-            channelId: this.state.channelIdInput
-        });
-
-        this.props.onFormToggle();
+        if (this.checkInputs()){
+            this.props.postChannel({
+                channelName: this.state.channelNameInput,
+                channelId: this.state.channelIdInput
+            });
+            this.props.onFormToggle();
+        }
     }
 
     handleChange(e){
@@ -81,6 +96,22 @@ class NewChannelForm extends Component {
             [e.target.name]: e.target.value
         });
     }
+
+    checkInputs(){
+        const { channelNameInput, channelIdInput } = this.state;
+        if (channelNameInput === "" || channelIdInput === "") {
+            console.log("HI");
+            this.props.addError("Please fill out each input.");
+            return false;
+        }
+        return true;
+    }
 }
 
-export default connect(null, { postChannel })(NewChannelForm);
+function mapStateToProps(state){
+    return {
+        errors: state.errors
+    }
+}
+
+export default withRouter(connect(mapStateToProps, { postChannel, addError, removeError })(NewChannelForm));

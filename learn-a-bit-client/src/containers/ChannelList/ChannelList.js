@@ -3,6 +3,7 @@ import "./ChannelList.css";
 import { connect } from "react-redux";
 import { getChannels, deleteChannel } from "../../store/actions/channels";
 import { setCurrentChannel } from "../../store/actions/currentChannel";
+import { removeError } from "../../store/actions/errors";
 
 import withAuth from "../../hocs/withAuth";
 
@@ -38,7 +39,7 @@ class ChannelList extends Component {
                 )
             })
             return (
-                <div className="hero-default channels-hero">
+                <div className="hero-default hero-channels">
                     <div className="container-default container-channels">
                         { showForm ?
                             <>
@@ -87,7 +88,7 @@ class ChannelList extends Component {
         }
         else {
             return (
-                <div className="hero-default channels-hero">
+                <div className="hero-default hero-channels">
                     <div className="container-default container-channels">
                         <div>
                             <button 
@@ -114,10 +115,11 @@ class ChannelList extends Component {
             this.props.getChannels()
             .then(this.setState({ isLoading: false }))
             .catch(err => console.log(err));
-        }, 1500);
+        }, 2000)
     }
 
     onFormToggle(){
+        this.props.removeError();
         this.setState(previousState => {
             return {
                 ...previousState,
@@ -143,4 +145,4 @@ function mapStateToProps(state){
     }
 }
 
-export default withAuth(connect(mapStateToProps, { getChannels, deleteChannel, setCurrentChannel })(ChannelList));
+export default withAuth(connect(mapStateToProps, { getChannels, deleteChannel, setCurrentChannel, removeError })(ChannelList));

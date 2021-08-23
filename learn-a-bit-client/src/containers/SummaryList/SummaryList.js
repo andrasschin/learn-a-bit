@@ -52,7 +52,7 @@ class SummaryList extends Component {
             )
         } else {
             return (
-                <div className="hero-default summary-hero">
+                <div className="hero-default hero-summary">
                     <div className="container-default">
                         <h2>Your Summaries</h2>
                         <div className="loading-icon-container">
@@ -65,12 +65,10 @@ class SummaryList extends Component {
     }
 
     componentDidMount(){
-        setTimeout(() => {
-            this.props.getSummaries()
+        this.props.getSummaries()
             .then(this.setState({
                 isLoading: false
-            }))   
-        }, 1500);
+            }))  
     }
 
     handleDelete(id, event){

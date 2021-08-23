@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import "./Video.css";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
 
-import withAuth from "../hocs/withAuth";
-import NewSummaryForm from "./NewSummaryForm";
+import withAuth from "../../hocs/withAuth";
+import NewSummaryForm from "../NewSummaryForm/NewSummaryForm";
 
 import axios from "axios";
 
@@ -29,38 +30,44 @@ class Video extends Component {
 
         if (!isLoading) {
             return (
-                <>
-                    <div>
+                <div class="hero-default hero-video">
+                    <div class="container-default container-video">
                         <h1>{currentVideo.channelTitle}</h1>
                         <h4><i>presents</i></h4>
                         <h3>{currentVideo.videoTitle}</h3>
-                        <p><i>{currentVideo.videoPublishedAt}</i></p>
+
                         <iframe
-                            width="800"
-                            height="450"
                             src={videoURL}
                         > 
                         </iframe>
+                    
+                        <NewSummaryForm
+                            sourceChannel={currentVideo.channelTitle}
+                            videoTitle={currentVideo.videoTitle}
+                        />
                     </div>
-                    <NewSummaryForm
-                        sourceChannel={currentVideo.channelTitle}
-                        videoTitle={currentVideo.videoTitle}
-                    />
-                </>
+                </div>
             )
         } 
         else if (!isLoading && Boolean(Object.keys(currentVideo).length)) {
             return (
-                <>
-                    <p>We couldn't get a video for <b>{currentChannel.channelName}</b></p>
-                    <p>Are you sure you gave the correct channel ID?</p>
-                </>
+                <div class="hero-default hero-video">
+                    <div class="container-default container-video">
+                        <h3>We couldn't get a video for <b>{currentChannel.channelName}</b> :(</h3>
+                        <h3>Are you sure you gave the correct channel ID?</h3>
+                    </div>
+                </div>
             )
         }
         else {
             return (
-                <div>
-                    <p>Getting a video from <b>{currentChannel.channelName}</b>...</p>
+                <div class="hero-default hero-video">
+                    <div class="container-default container-video">
+                        <h3>Getting a video from <b>{currentChannel.channelName}...</b></h3>
+                        <div class="loading-icon-container">
+                            <div class="loading-icon"></div>
+                        </div>
+                    </div>
                 </div>
             )
         }
@@ -73,17 +80,19 @@ class Video extends Component {
 
         // Development version
         //  -> Simulating the request for videos
-        this.setState(previousState => {
-            return {
-                ...previousState,
-                isLoading: false,
-                currentVideo: {
-                    channelTitle: "Kurzgesagt – In a Nutshell",
-                    videoId: "G-WO-z-QuWI",
-                    videoTitle: "How To Terraform Venus (Quickly)"
+        setTimeout(() => {
+            this.setState(previousState => {
+                return {
+                    ...previousState,
+                    isLoading: false,
+                    currentVideo: {
+                        channelTitle: "Kurzgesagt – In a Nutshell",
+                        videoId: "G-WO-z-QuWI",
+                        videoTitle: "How To Terraform Venus (Quickly)"
+                    }
                 }
-            }
-        })
+            })
+        }, 2000);
 
         // Production version
         /* axios.get(URL)

@@ -23,7 +23,7 @@ class LoginForm extends Component {
         })
 
         return (
-            <div className="container-fluid auth-hero login-hero">
+            <div className="container-fluid auth-hero hero-login">
                 
                 <form
                     autoComplete="off"
