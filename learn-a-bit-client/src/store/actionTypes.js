@@ -12,7 +12,10 @@ export const ADD_CHANNEL = "ADD_CHANNEL";
 export const REMOVE_CHANNEL = "REMOVE_CHANNEL";
 export const SET_CURRENT_CHANNEL = "SET_CURRENT_CHANNEL";
 
-// Summaries
+// User summaries
+export const LOAD_USER_SUMMARIES = "LOAD_SUMMARIES";
+export const ADD_USER_SUMMARY = "ADD_SUMMARY";
+export const REMOVE_USER_SUMMARY = "REMOVE_SUMMARY";
+
+// Summaries (/community)
 export const LOAD_SUMMARIES = "LOAD_SUMMARIES";
-export const ADD_SUMMARY = "ADD_SUMMARY";
-export const REMOVE_SUMMARY = "REMOVE_SUMMARY";

@@ -1,15 +1,8 @@
 const express = require("express");
 const router = express.Router({ mergeParams: true });
-const { getSummaries, createSummary, showSummary, updateSummary, deleteSummary} = require("../handlers/summaries.js"); 
+const { getSummaries } = require("../handlers/summaries");
 
 router.route("/")
     .get(getSummaries)
-    .post(createSummary)
-
-router.route("/:summary_id")
-    .get(showSummary)
-    .put(updateSummary)
-    .delete(deleteSummary)
-
 
 module.exports = router;

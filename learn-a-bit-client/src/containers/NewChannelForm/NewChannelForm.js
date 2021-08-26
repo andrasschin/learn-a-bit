@@ -11,7 +11,8 @@ class NewChannelForm extends Component {
         super(props);
         this.state = {
             channelNameInput: "",
-            channelIdInput: ""
+            channelIdInput: "",
+            isLoading: false
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -20,7 +21,7 @@ class NewChannelForm extends Component {
     }
 
     render(){
-        const { channelNameInput, channelIdInput } = this.state;
+        const { channelNameInput, channelIdInput, isLoading } = this.state;
         const { history, errors, removeError, addError } = this.props;
 
         history.listen(() => {
@@ -66,11 +67,18 @@ class NewChannelForm extends Component {
                     />
                 </div>
                 <div>
-                    <button 
-                        className="btn-submit-default"
-                    >
-                        Save
-                    </button>
+                        { isLoading ? 
+                            <button 
+                                className="btn-submit-default btn-submit-saving disabled"
+                            >
+                                Saving...
+                            </button> :
+                            <button 
+                                className="btn-submit-default"
+                            >
+                                Save
+                            </button>
+                        }
                 </div>
                 { errors.message ? 
                     <div className="alert alert-danger">{errors.message}</div> 
@@ -83,11 +91,19 @@ class NewChannelForm extends Component {
     handleNewChannel(e){
         e.preventDefault();
         if (this.checkInputs()){
-            this.props.postChannel({
-                channelName: this.state.channelNameInput,
-                channelId: this.state.channelIdInput
+            this.setState({
+                isLoading: true
             });
-            this.props.onFormToggle();
+
+            setTimeout(() => {
+                this.props.postChannel({
+                    channelName: this.state.channelNameInput,
+                    channelId: this.state.channelIdInput
+                })
+                    .then(() => {
+                        this.props.onFormToggle();
+                    })
+            }, 2000);
         }
     }
 

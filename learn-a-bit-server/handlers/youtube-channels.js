@@ -27,13 +27,12 @@ exports.createChannel = async function (req, res, next){
 exports.deleteChannel = async function (req, res, next){
     try {
         let channel = await db.YoutubeChannel.findById(req.params.youtube_channel_id);
-        channel.remove();
-
         let user = await db.User.findById(req.params.user_id);
-        let idx = user.youtubeChannels.findIndex(channel => req.params.youtube_channel_id === channel.id.toString());
-        user.youtubeChannels.splice(idx, 1);
+        
+        user.youtubeChannels.pull(channel._id);
         await user.save();
 
+        channel.remove();
         res.status(200).json(channel);
     } catch (err) {
         return next(err);

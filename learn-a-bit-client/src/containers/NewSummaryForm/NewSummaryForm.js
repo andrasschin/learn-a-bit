@@ -3,7 +3,7 @@ import "./NewSummaryForm.css";
 
 import { connect } from "react-redux";
 import withAuth from "../../hocs/withAuth";
-import { postSummary } from "../../store/actions/summaries";
+import { postSummary } from "../../store/actions/userSummaries";
 import { addError, removeError } from "../../store/actions/errors";
 import { withRouter } from "react-router-dom";
 
@@ -13,7 +13,8 @@ class NewSummaryForm extends Component {
 
         this.state = {
             titleInput: "",
-            textInput: ""
+            textInput: "",
+            isLoading: false
         }
 
         this.handleNewSummary = this.handleNewSummary.bind(this);
@@ -22,7 +23,7 @@ class NewSummaryForm extends Component {
     }
 
     render(){
-        const { titleInput, textInput } = this.state;
+        const { titleInput, textInput, isLoading } = this.state;
         const { sourceChannel, videoTitle, history, errors, addError, removeError } = this.props;
 
         history.listen(() => {
@@ -30,7 +31,8 @@ class NewSummaryForm extends Component {
         })
 
         return (
-            <form 
+            <form
+                autoComplete="off"
                 className="summary-form"
                 onSubmit={this.handleNewSummary}
             >
@@ -106,12 +108,18 @@ class NewSummaryForm extends Component {
                 </div>
 
                 <div className="text-center">
-                    <button 
-                        type="submit"
-                        className="btn-submit-default"
-                    >
-                        I've just learned something!
-                    </button>
+                { isLoading ? 
+                            <button
+                                className="btn-submit-default btn-submit-saving disabled"
+                            >
+                                Saving...
+                            </button> :
+                            <button 
+                                className="btn-submit-default"
+                            >
+                                Save
+                            </button>
+                        }
                 </div>
 
                 { errors.message ? 
@@ -129,12 +137,20 @@ class NewSummaryForm extends Component {
 
         if (this.checkInputs()){
             const { titleInput, textInput } = this.state;
-            const { sourceChannel } = this.props;
+            const { sourceChannel, history } = this.props;
+            
+            this.setState({
+                isLoading: true
+            })
+
             this.props.postSummary({
                 source: sourceChannel,
                 title: titleInput,
                 text: textInput
-            });
+            })
+                .then(() => {
+                    history.push("/summaries");
+                })
         }
     }
 

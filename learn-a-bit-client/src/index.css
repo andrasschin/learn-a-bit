@@ -11,6 +11,7 @@ html {
 
 * {
     box-sizing: border-box;
+    scrollbar-width: thin;
 }
 
 body {
@@ -202,4 +203,9 @@ nav {
 
 .btn-submit-default:hover {
     background-color: rgb(1, 105, 105);
+}
+
+.btn-submit-saving {
+    color: black;
+    background-color: lightskyblue !important;
 }

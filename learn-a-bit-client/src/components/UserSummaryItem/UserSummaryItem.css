@@ -1,0 +1,44 @@
+.list-user-summary-item {
+    font-size: 20px;
+    background-color: #EBEBEB;
+    padding: 5px 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    margin: 25px 0;
+}
+
+.list-user-summary-item p {
+    color: black;
+}
+
+.list-user-summary-item-arrow {
+    font-weight: 400;
+    margin-right: 10px;
+}
+
+.list-user-summary-item p {
+    margin: 0;
+    padding: 5px 0;
+}
+
+.list-user-summary-item .list-user-summary-item-body {
+    text-align: justify;
+    padding: 20px 45px 10px 45px;
+    text-indent: 1%;
+    white-space: pre-line;
+}
+
+.list-user-summary-item-remove-btn {
+    margin-left: 10px;
+    color: #EBEBEB;
+}
+
+.list-user-summary-item:hover {
+    background-color: #F7717D;
+    color: white;
+    cursor: pointer;
+}
+
+.list-user-summary-item:hover > p > .list-user-summary-item-remove-btn {
+    color: crimson;
+}

@@ -1,41 +1,32 @@
 .list-summary-item {
-    font-size: 20px;
-    background-color: #EBEBEB;
-    padding: 5px 10px;
-    margin: 10px 0;
-    border-radius: 6px;
-    color: black;
-    margin: 25px 0;
+    border: 1px solid white;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
 }
 
-.list-summary-item-arrow {
-    font-weight: 400;
-    margin-right: 10px;
+.list-summary-item-header {
+    text-align: left;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.list-summary-item p {
-    margin: 0;
-    padding: 5px 0;
+.list-summary-item-header-author {
+    color: orangered;
+    font-weight: bold;
 }
 
-.list-summary-item .list-summary-item-body {
+.list-summary-item-header-source {
+    color: rgb(173, 14, 173);
+    font-weight: bold;
+}
+
+.list-summary-item-title {
+    font-weight: bold;
+    font-size: 1.8rem;
+    padding-top: 4px;
+}
+
+.list-summary-item-body {
     text-align: justify;
-    padding: 20px 45px 10px 45px;
-    text-indent: 1%;
-    white-space: pre-line;
-}
-
-.list-summary-item-remove-btn {
-    margin-left: 10px;
-    color: beige;
-}
-
-.list-summary-item:hover {
-    background-color: #F7717D;
-    color: white;
-    cursor: pointer;
-}
-
-.list-summary-item:hover > p > .list-summary-item-remove-btn {
-    color: crimson;
 }

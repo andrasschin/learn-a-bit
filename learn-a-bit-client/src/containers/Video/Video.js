@@ -30,8 +30,8 @@ class Video extends Component {
 
         if (!isLoading) {
             return (
-                <div class="hero-default hero-video">
-                    <div class="container-default container-video">
+                <div className="hero-default hero-video">
+                    <div className="container-default container-video">
                         <h1>{currentVideo.channelTitle}</h1>
                         <h4><i>presents</i></h4>
                         <h3>{currentVideo.videoTitle}</h3>
@@ -51,8 +51,8 @@ class Video extends Component {
         } 
         else if (!isLoading && Boolean(Object.keys(currentVideo).length)) {
             return (
-                <div class="hero-default hero-video">
-                    <div class="container-default container-video">
+                <div className="hero-default hero-video">
+                    <div className="container-default container-video">
                         <h3>We couldn't get a video for <b>{currentChannel.channelName}</b> :(</h3>
                         <h3>Are you sure you gave the correct channel ID?</h3>
                     </div>
@@ -61,11 +61,11 @@ class Video extends Component {
         }
         else {
             return (
-                <div class="hero-default hero-video">
-                    <div class="container-default container-video">
+                <div className="hero-default hero-video">
+                    <div className="container-default container-video">
                         <h3>Getting a video from <b>{currentChannel.channelName}...</b></h3>
-                        <div class="loading-icon-container">
-                            <div class="loading-icon"></div>
+                        <div className="loading-icon-container">
+                            <div className="loading-icon"></div>
                         </div>
                     </div>
                 </div>
@@ -113,7 +113,8 @@ class Video extends Component {
 
 function mapStateToProps(state){
     return {
-        currentChannel: state.currentChannel
+        currentChannel: state.currentChannel,
+        currentUser: state.currentUser
     }
 }
 

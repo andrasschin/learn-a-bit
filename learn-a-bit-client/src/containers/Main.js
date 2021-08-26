@@ -11,7 +11,8 @@ import ChannelList from "./ChannelList/ChannelList";
 import LoginForm from "../components/LoginForm/LoginForm";
 import SignupForm from "../components/SignupForm/SignupForm";
 import Video from "../containers/Video/Video";
-import SummaryList from "./SummaryList/SummaryList";
+import Community from "./Community/Community";
+import UserSummaryList from "./UserSummaryList/UserSummaryList";
 
 const Main = (props) => {
     const { authUser, signUpUser, currentUser, errors, addError, removeError } = props;
@@ -34,17 +35,15 @@ const Main = (props) => {
             />
             <Route
                 exact path="/summaries"
-                component={SummaryList}
+                component={UserSummaryList}
             />
             <Route
                 exact path="/video"
-                render={() => {
-                    return (
-                        <Video
-                            currentUser={currentUser}
-                        />
-                    )
-                }}
+                component={Video}
+            />
+            <Route
+                exact path="/community"
+                component={Community}
             />
             <Route 
                 exact path="/signup" 

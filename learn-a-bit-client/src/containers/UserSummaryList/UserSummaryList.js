@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import "./SummaryList.css";
+import "./UserSummaryList.css";
 import { connect } from "react-redux";
-import { getSummaries, deleteSummary } from "../../store/actions/summaries";
+import { getSummaries, deleteSummary } from "../../store/actions/userSummaries";
 
 import withAuth from "../../hocs/withAuth";
 
-import SummaryItem from "../../components/SummaryItem/SummaryItem";
+import SummaryItem from "../../components/UserSummaryItem/UserSummaryItem";
 
 class SummaryList extends Component {
     constructor(props){
@@ -35,7 +35,7 @@ class SummaryList extends Component {
             })
 
             return (
-                <div className="hero-default summary-hero">
+                <div className="hero-default hero-summary">
                     <div className="container-default">
                         <h2>Your Summaries</h2>
                         { summaryList.length === 0 ? 
@@ -79,7 +79,7 @@ class SummaryList extends Component {
 
 function mapStateToProps(state){
     return {
-        summaries: state.summaries
+        summaries: state.userSummaries
     }
 }
 
