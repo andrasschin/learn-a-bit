@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Community.css";
 
 import { connect } from "react-redux";
-import { getSummaries } from "../../store/actions/summaries";
+import { getSummaries, switchUpdootOnSummary } from "../../store/actions/summaries";
 
 import SummaryItem from "../../components/SummaryItem/SummaryItem";
 
@@ -13,22 +13,29 @@ class Community extends Component {
         this.state = {
             isLoading: true
         }
+
+        this.handleUpdoot = this.handleUpdoot.bind(this);
     }
     
     render(){
-        const { summaries } = this.props;
+        const { summaries, currentUser } = this.props;
         const { isLoading } = this.state;
+        const userId = currentUser.user.id;
         
         if (Array.isArray(summaries) && !isLoading) {
             const summariesList = summaries.map(summary => {
                 return (
                     <SummaryItem
                         key={summary._id}
-                        source={summary.source}
+                        videoSource={summary.videoSource}
+                        videoTitle={summary.videoTitle}
                         title={summary.title}
                         text={summary.text}
                         author={summary.author}
+                        updoots={summary.updoots}
                         createdAt={summary.createdAt}
+                        onUpdoot={this.handleUpdoot.bind(this, summary._id)}
+                        currentUserId={userId}
                     ></SummaryItem>
                 )
             })
@@ -60,21 +67,24 @@ class Community extends Component {
     }
 
     componentDidMount(){
-        setTimeout(() => {
-            this.props.getSummaries()
+        this.props.getSummaries()
             .then(() => {
                 this.setState({
                     isLoading: false
                 })
-            })
-        }, 2000);
+            });
+    }
+
+    handleUpdoot(id){
+        this.props.switchUpdootOnSummary(id);
     }
 }
 
 function mapStateToProps(state){
     return {
-        summaries: state.summaries
+        summaries: state.summaries,
+        currentUser: state.currentUser
     }
 }
 
-export default connect(mapStateToProps, { getSummaries })(Community);
+export default connect(mapStateToProps, { getSummaries, switchUpdootOnSummary })(Community);

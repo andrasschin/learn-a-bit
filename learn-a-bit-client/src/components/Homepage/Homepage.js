@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Homepage.css';
 
 const Homepage = (props) => {
@@ -10,21 +11,36 @@ const Homepage = (props) => {
                 <>
                     <h1>Hi there!</h1>
                     <p>Learn interesting things from Youtube every day and make them stick!</p>
-                    <button className="btn btn-signup">Get started!</button>
+                    <div>
+                        <Link 
+                            className="btn-default link-to-signup"
+                            to="/signup"
+                        >
+                            Get started!
+                        </Link>
+                    </div>
                 </>
                 : 
                 <>
                     <h1>Hi, <b>{currentUser.user.username}.</b></h1>
                     <h3>Good to see you back!</h3>
                     <p>What are you up to today?</p>
-                    <button
-                        className="btn btn-labq">
-                            Learn a bit quickly
-                    </button>
-                    <button
-                        className="btn btn-waout">
-                            What are others up to?
-                    </button>
+                    <div>
+                        <Link
+                            className="btn-default link-to-channels"
+                            to="/channels"
+                        >
+                                Learn a bit quickly
+                        </Link>
+                    </div>
+                    <div className="delayed-animation">
+                        <Link
+                            className="btn-default link-to-community"
+                            to="/community"
+                        >
+                                What are others up to?
+                        </Link>
+                    </div>
                 </>
             }
             </div>

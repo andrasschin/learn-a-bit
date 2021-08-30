@@ -47,35 +47,35 @@
     font-size: 1.5rem;
 }
 
-.home-hero .home-item button {
+.home-hero .home-item div {
     display: block;
     position: relative;
-    margin: 15px auto;
+    margin: 30px auto;
     opacity: 0;
+
+    animation: slide-from-left 0.3s 1.5s forwards;
 }
 
-.btn-signup {
+.home-hero .home-item .delayed-animation {
+    animation-delay: 1.8s;
+}
+
+.home-hero .home-item a {
+    color: white;
+    text-decoration: none;
+    text-shadow: none;
+}
+
+.link-to-signup {
     background-color: #157A6E;
-    color: white;
-    font-size: inherit;
-
-    animation: slide-from-left 0.3s 1.5s forwards;
 }
 
-.btn-labq {
+.link-to-channels {
     background-color:mediumvioletred;
-    color: white;
-    font-size: inherit;
-
-    animation: slide-from-left 0.3s 1.5s forwards;
 }
 
-.btn-waout {
+.link-to-community {
     background-color: lightseagreen;
-    color: white;
-    font-size: inherit;
-
-    animation: slide-from-left 0.3s 1.8s forwards;
 }
 
 @keyframes slide-up {

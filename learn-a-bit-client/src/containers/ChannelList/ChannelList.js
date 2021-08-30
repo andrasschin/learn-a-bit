@@ -111,11 +111,9 @@ class ChannelList extends Component {
     }
 
     componentDidMount(){
-        setTimeout(() => {
-            this.props.getChannels()
-            .then(this.setState({ isLoading: false }))
-            .catch(err => console.log(err));
-        }, 2000)
+        this.props.getChannels()
+        .then(this.setState({ isLoading: false }))
+        .catch(err => console.log(err));
     }
 
     onFormToggle(){

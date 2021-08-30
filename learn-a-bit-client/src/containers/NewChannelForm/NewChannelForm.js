@@ -69,12 +69,12 @@ class NewChannelForm extends Component {
                 <div>
                         { isLoading ? 
                             <button 
-                                className="btn-submit-default btn-submit-saving disabled"
+                                className="btn-default btn-submit-default btn-submit-saving disabled"
                             >
                                 Saving...
                             </button> :
                             <button 
-                                className="btn-submit-default"
+                                className="btn-default btn-submit-default"
                             >
                                 Save
                             </button>

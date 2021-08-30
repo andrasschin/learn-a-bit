@@ -25,7 +25,8 @@ class SummaryList extends Component {
                 return (
                     <SummaryItem
                         key={summary._id}
-                        source={summary.source}
+                        videoSource={summary.videoSource}
+                        videoTitle={summary.videoTitle}
                         title={summary.title}
                         text={summary.text}
                         createdAt={summary.createdAt}

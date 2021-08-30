@@ -26,6 +26,10 @@ let userSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Summary"
     }],
+    updootedSummaries: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Summary"
+    }],
     youtubeChannels: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "YoutubeChannel"

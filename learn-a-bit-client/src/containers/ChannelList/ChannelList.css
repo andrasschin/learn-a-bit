@@ -18,6 +18,7 @@
     color: white;
     width: auto;
     background-color: transparent;
+    border: none;
 
     transition: color 0.25s;
 }

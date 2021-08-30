@@ -1,5 +1,6 @@
 import axios from "axios";
 import { LOAD_USER_SUMMARIES, ADD_USER_SUMMARY, REMOVE_USER_SUMMARY} from "../actionTypes";
+import { addError } from "../actions/errors";
 
 function loadSummaries(summaries){
     return {
@@ -54,6 +55,7 @@ export function postSummary(newSummary){
                 })
                 .catch(err => {
                     console.log("[ERROR] POSTSUMMARY: ", err);
+                    dispatch(addError("Something went wrong :("))
                     reject();
                 })
         })

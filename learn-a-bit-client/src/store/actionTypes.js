@@ -19,3 +19,4 @@ export const REMOVE_USER_SUMMARY = "REMOVE_SUMMARY";
 
 // Summaries (/community)
 export const LOAD_SUMMARIES = "LOAD_SUMMARIES";
+export const UPDATE_SUMMARY_WITH_UPDOOT = "UPDATE_SUMMARY_WITH_UPDOOT";

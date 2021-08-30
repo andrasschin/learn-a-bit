@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import "./Navbar.css";
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { logoutUser } from '../store/actions/auth';
+import { logoutUser } from '../../store/actions/auth';
 
 class Navbar extends Component {
     constructor(props){

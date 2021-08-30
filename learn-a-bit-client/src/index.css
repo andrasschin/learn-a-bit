@@ -20,18 +20,8 @@ body {
     font-family: "Poppins",  sans-serif;
 }
 
-a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-}
-
 h1, h2, h3, h4, p, div {
     text-align: center;
-}
-
-button {
-    border: none !important;
 }
 
 input, textarea {
@@ -71,7 +61,6 @@ input, textarea {
     border-bottom: 1px solid white;
 }
 
-
 .list-items {
     margin-top: 30px;
     max-height: 100%;
@@ -96,9 +85,10 @@ input, textarea {
     width: 45px;
     height: 45px;
     border: 3px solid orange;
-    border-radius: 10%;
+    border-left: 3px solid transparent;
+    border-radius: 100%;
 
-    animation: loading-icon 1.65s ease-in-out infinite;
+    animation: loading-icon 1s linear infinite;
 }
 
 @keyframes loading-icon {
@@ -106,36 +96,9 @@ input, textarea {
         transform: rotate(0deg);
     }
 
-    50% {
-        border-radius: 50%;
-        transform: rotate(180deg) scale(1.5);
-    }
-
     to {
         transform: rotate(360deg);
     }
-}
-
-/* Nav */
-
-.nav-link:hover {
-    color: orange;
-    border-bottom: 1px solid orange;
-}
-
-nav {
-    padding-left: 5px;
-    padding-right: 20px;
-    font-size: 20px;
-}
-
-.navbar-brand {
-    font-weight: bold;
-    font-size: 24px;
-}
-
-.nav-link {
-    display: inline;
 }
 
 /* -- Common -- */
@@ -192,17 +155,21 @@ nav {
 
 /* Button */
 
-.btn-submit-default {
-    background-color: teal;
+.btn-default {
     border-radius: 10px;
     font-size: 1.3rem;
-    color: white;
     padding: 10px 35px;
     transition: background-color 0.5s;
+    color: white;
+    border: none !important;
 }
 
-.btn-submit-default:hover {
-    background-color: rgb(1, 105, 105);
+.btn-default:hover {
+    filter: brightness(0.9);
+}
+
+.btn-submit-default {
+    background-color: teal;
 }
 
 .btn-submit-saving {

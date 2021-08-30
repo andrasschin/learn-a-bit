@@ -71,7 +71,7 @@ class LoginForm extends Component {
                     <div>
                         <button 
                             type="submit"
-                            className="btn submit-btn login-btn"
+                            className="btn-default btn-submit-default login-btn"
                         >
                             Login
                         </button>

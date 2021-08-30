@@ -88,9 +88,9 @@ class SignupForm extends Component {
                     <div>
                         <button 
                             type="submit"
-                            className="btn submit-btn signup-btn"
+                            className="btn-default btn-submit-default signup-btn"
                         >
-                            Sign up!
+                            Sign up
                         </button>
                     </div>
                     { errors.message ? 

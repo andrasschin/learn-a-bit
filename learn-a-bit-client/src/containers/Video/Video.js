@@ -42,7 +42,7 @@ class Video extends Component {
                         </iframe>
                     
                         <NewSummaryForm
-                            sourceChannel={currentVideo.channelTitle}
+                            videoSource={currentVideo.channelTitle}
                             videoTitle={currentVideo.videoTitle}
                         />
                     </div>
@@ -80,19 +80,19 @@ class Video extends Component {
 
         // Development version
         //  -> Simulating the request for videos
-        setTimeout(() => {
-            this.setState(previousState => {
-                return {
-                    ...previousState,
-                    isLoading: false,
-                    currentVideo: {
-                        channelTitle: "Kurzgesagt – In a Nutshell",
-                        videoId: "G-WO-z-QuWI",
-                        videoTitle: "How To Terraform Venus (Quickly)"
-                    }
+
+        this.setState(previousState => {
+            return {
+                ...previousState,
+                isLoading: false,
+                currentVideo: {
+                    channelTitle: "Kurzgesagt – In a Nutshell",
+                    videoId: "G-WO-z-QuWI",
+                    videoTitle: "How To Terraform Venus (Quickly)"
                 }
-            })
-        }, 2000);
+            }
+        })
+
 
         // Production version
         /* axios.get(URL)

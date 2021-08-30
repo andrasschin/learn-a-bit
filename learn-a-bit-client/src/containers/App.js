@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-import Navbar from './Navbar';
+import Navbar from './Navbar/Navbar';
 import Main from './Main';
 
 const App = (props) => {

@@ -13,7 +13,7 @@ class UserSummaryItem extends Component {
     }
 
     render(){
-        const { source, title, text, createdAt, onDelete } = this.props;
+        const { videoSource, videoTitle, title, text, createdAt, onDelete } = this.props;
         const { showText } = this.state;
 
         let date = new Date(createdAt);
@@ -50,7 +50,7 @@ class UserSummaryItem extends Component {
                     <div className="list-user-summary-item-body">
                         <p>{text}</p>
                         <hr/>
-                        <p>Based on a video from <b>{source}</b></p>
+                        <p>Based on the video <b>{videoTitle}</b> from <b>{videoSource}</b></p>
                         <p><i>Written on {createdAtText}</i></p>
                     </div>
                     : null

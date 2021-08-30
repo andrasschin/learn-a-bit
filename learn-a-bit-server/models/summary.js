@@ -6,7 +6,11 @@ let summarySchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
-    source: {
+    videoSource: {
+        type: String,
+        required: true
+    },
+    videoTitle: {
         type: String,
         required: true
     },
@@ -18,6 +22,10 @@ let summarySchema = new Schema({
         type: String,
         required: true
     },
+    updoots: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }],
     createdAt: {
         type: Date,
         default: Date.now

@@ -24,7 +24,7 @@ class NewSummaryForm extends Component {
 
     render(){
         const { titleInput, textInput, isLoading } = this.state;
-        const { sourceChannel, videoTitle, history, errors, addError, removeError } = this.props;
+        const { videoSource, videoTitle, history, errors, addError, removeError } = this.props;
 
         history.listen(() => {
             removeError();
@@ -48,7 +48,7 @@ class NewSummaryForm extends Component {
                     <input 
                         type="text" 
                         id="sourceInput"
-                        value={sourceChannel}
+                        value={videoSource}
                         className="form-control"
                         disabled
                     />
@@ -110,12 +110,12 @@ class NewSummaryForm extends Component {
                 <div className="text-center">
                 { isLoading ? 
                             <button
-                                className="btn-submit-default btn-submit-saving disabled"
+                                className="btn-default btn-submit-default btn-submit-saving disabled"
                             >
                                 Saving...
                             </button> :
                             <button 
-                                className="btn-submit-default"
+                                className="btn-default btn-submit-default"
                             >
                                 Save
                             </button>
@@ -137,20 +137,21 @@ class NewSummaryForm extends Component {
 
         if (this.checkInputs()){
             const { titleInput, textInput } = this.state;
-            const { sourceChannel, history } = this.props;
+            const { videoSource, videoTitle, history } = this.props;
             
             this.setState({
                 isLoading: true
-            })
+            });
 
             this.props.postSummary({
-                source: sourceChannel,
+                videoSource,
+                videoTitle,
                 title: titleInput,
                 text: textInput
             })
                 .then(() => {
                     history.push("/summaries");
-                })
+                });
         }
     }
 
