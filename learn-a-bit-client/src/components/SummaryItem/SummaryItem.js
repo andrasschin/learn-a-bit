@@ -13,7 +13,7 @@ class SummaryItem extends Component {
     }
 
     render(){
-        const { videoSource, videoTitle, createdAt, title, author, updoots, onUpdoot, currentUserId } = this.props;
+        const { videoSource, videoTitle, createdAt, title, author, updoots, updootsCount, onUpdoot, currentUserId } = this.props;
         const { showMore } = this.state;
         let { text } = this.props;
 
@@ -64,18 +64,18 @@ class SummaryItem extends Component {
                             className="btn-updooted"
                             onClick={onUpdoot}
                         >
-                            <i class="fas fa-heart"></i>
+                            <i className="fas fa-heart"></i>
                         </button> :
                         <button 
                             className="btn-updoot"
                             onClick={onUpdoot}
                         >
-                            <i class="far fa-heart"></i>
+                            <i className="far fa-heart"></i>
                             Updoot
                         </button>
                     }
                     <span className="updoot-count">
-                        {updoots.length}
+                        {updootsCount}
                     </span>
                 </div>
             </div>

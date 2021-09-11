@@ -6,6 +6,10 @@ let summarySchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
+    authorName: {
+        type: String,
+        required: true
+    },
     videoSource: {
         type: String,
         required: true
@@ -26,6 +30,10 @@ let summarySchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     }],
+    updootsCount: {
+        type: Number,
+        default: 0
+    },
     createdAt: {
         type: Date,
         default: Date.now

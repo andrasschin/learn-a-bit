@@ -8,18 +8,22 @@ function loadSummaries(summaries){
     }
 }
 
-function updateSummaryWithUpdoot(id, updootsArray){
+function updateSummaryWithUpdoot(payload){
     return {
         type: UPDATE_SUMMARY_WITH_UPDOOT,
-        id,
-        updootsArray
+        payload
     }
 }
 
-export function getSummaries(){
+export function getSummaries(sortByParams, customSearchParams){
     return (dispatch) => {
         return new Promise((resolve, reject) => {
-            axios.get("/api/summaries")
+            axios.get("/api/summaries", {
+                params: {
+                    sortByParams,
+                    customSearchParams
+                }
+            })
                 .then(res => {
                     dispatch(loadSummaries(res.data));
                     resolve();
@@ -43,7 +47,11 @@ export function switchUpdootOnSummary(summaryId){
         return new Promise((resolve, reject) => {
             axios.post("/api/summaries", data)
                 .then(res => {
-                    dispatch(updateSummaryWithUpdoot(summaryId, res.data.updoots));
+                    dispatch(updateSummaryWithUpdoot({
+                        id: summaryId, 
+                        updootsArray: res.data.updoots,
+                        updootsCount: res.data.updootsCount
+                    }));
                     resolve();
                 })
                 .catch(err => {

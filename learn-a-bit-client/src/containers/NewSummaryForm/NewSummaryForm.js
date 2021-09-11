@@ -134,6 +134,7 @@ class NewSummaryForm extends Component {
 
     handleNewSummary(e){
         e.preventDefault();
+        const { user } = this.props.currentUser;
 
         if (this.checkInputs()){
             const { titleInput, textInput } = this.state;
@@ -144,6 +145,7 @@ class NewSummaryForm extends Component {
             });
 
             this.props.postSummary({
+                authorName: user.username,
                 videoSource,
                 videoTitle,
                 title: titleInput,
@@ -173,7 +175,8 @@ class NewSummaryForm extends Component {
 
 function mapStateToProps(state) {
     return {
-        errors: state.errors
+        errors: state.errors,
+        currentUser: state.currentUser
     }
 }
 

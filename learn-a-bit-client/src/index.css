@@ -40,7 +40,7 @@ input, textarea {
 .hero-default {
     height: calc(100% - 78px);
     width: 100%;
-    padding: 30px 15px;
+    padding: 10px 15px;
 }
 
 .container-default {
@@ -67,7 +67,7 @@ input, textarea {
     color: white;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1200px) {
     .container-default {
         width: 90%;
     }
@@ -159,7 +159,6 @@ input, textarea {
     border-radius: 10px;
     font-size: 1.3rem;
     padding: 10px 35px;
-    transition: background-color 0.5s;
     color: white;
     border: none !important;
 }
