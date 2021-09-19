@@ -9,7 +9,8 @@ const errorHandler  = require("./handlers/error");
 const authRoutes    = require("./routes/auth");
 const summaryRoutes     = require("./routes/summaries");
 const userSummaryRoutes = require("./routes/user-summaries");
-const youtubeChannelRoutes = require("./routes/youtube-channels.js")
+const updootedSummariesRoutes = require("./routes/updooted-summaries");
+const youtubeChannelRoutes = require("./routes/youtube-channels")
 
 const { ensureLogin, ensureLoginAndCorrectUser } = require("./middleware/auth");
 
@@ -17,7 +18,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res, next) => {
-    res.send("HI")
+    res.send("Root of the Learn a Bit API.")
 })
 
 // Auth routes
@@ -35,6 +36,12 @@ app.use(
     ensureLoginAndCorrectUser, 
     userSummaryRoutes
 );
+
+app.use(
+    "/api/users/:user_id/updooted-summaries",
+    ensureLoginAndCorrectUser,
+    updootedSummariesRoutes
+)
 
 // Source routes
 //  Youtube Channel routes

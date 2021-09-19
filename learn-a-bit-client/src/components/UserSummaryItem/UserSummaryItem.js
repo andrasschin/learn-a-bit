@@ -13,7 +13,7 @@ class UserSummaryItem extends Component {
     }
 
     render(){
-        const { videoSource, videoTitle, title, text, createdAt, onDelete } = this.props;
+        const { videoSource, videoTitle, title, text, createdAt, updootsCount, onDelete } = this.props;
         const { showText } = this.state;
 
         let date = new Date(createdAt);
@@ -37,7 +37,16 @@ class UserSummaryItem extends Component {
                         }
                     </span>
                 
-                    <b>{title}</b>
+                    <b>{title} (
+                            <span className="updoots-count">
+                                { updootsCount === 0 ? 
+                                    <i className="far fa-heart"></i> :
+                                    <i className="fas fa-heart"></i>
+                                }
+                                {updootsCount}
+                            </span>
+                        )
+                    </b>
                     
                     <span 
                         className="list-user-summary-item-remove-btn"

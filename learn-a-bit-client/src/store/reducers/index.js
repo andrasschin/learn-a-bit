@@ -6,6 +6,7 @@ import channels from "./channels";
 import currentChannel from "./currentChannel";
 import userSummaries from "./userSummaries";
 import summaries from "./summaries";
+import updootedSummaries from "./updootedSummaries";
 
 const appReducer = combineReducers({
     currentUser,
@@ -13,7 +14,8 @@ const appReducer = combineReducers({
     errors,
     currentChannel,
     userSummaries,
-    summaries
+    summaries,
+    updootedSummaries
 })
 
 const rootReducer = (state, action) => {

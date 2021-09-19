@@ -2,32 +2,6 @@
     background-color: mediumseagreen;
 }
 
-.order-list-by {
-    display: flex;
-    margin-top: 20px;
-    border-radius: 10px;
-    border: 1px solid white;
-    overflow:hidden;
-}
-
-.order-list-by .btn-order-by {
-    width: 100%;
-    border: none;
-    background-color: transparent;
-    color: white;
-    padding: 10px 15px;
-
-    transition: all 0.25s;
-}
-
-.order-list-by .btn-order-by-active {
-    background-color: royalblue;
-}
-
-.order-list-by .btn-order-by:hover {
-    background-color: #2E86AB;
-}
-
 .container-form-custom-search {
     color: white;
     margin: 30px auto 0 auto;

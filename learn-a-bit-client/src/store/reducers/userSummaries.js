@@ -1,10 +1,6 @@
 import { ADD_USER_SUMMARY, LOAD_USER_SUMMARIES, REMOVE_USER_SUMMARY } from "../actionTypes";
 
-const DEFAULT_STATE = {
-    userSummaries: []
-}
-
-export default (state=DEFAULT_STATE, action) => {
+export default (state=[], action) => {
     switch(action.type){
         case LOAD_USER_SUMMARIES:
             return [...action.summaries];

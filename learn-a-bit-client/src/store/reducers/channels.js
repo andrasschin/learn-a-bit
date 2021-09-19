@@ -1,10 +1,6 @@
 import { LOAD_CHANNELS, ADD_CHANNEL, REMOVE_CHANNEL } from "../actionTypes"
 
-const DEFAULT_STATE = {
-    channels: []
-}
-
-export default (state=DEFAULT_STATE, action) => {
+export default (state=[], action) => {
     switch (action.type) {
         case LOAD_CHANNELS:
             return [...action.channels]

@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "./Community.css";
 
 import { connect } from "react-redux";
-import { getSummaries, switchUpdootOnSummary } from "../../store/actions/summaries";
+import { getSummaries } from "../../store/actions/summaries";
+import { getUpdootedSummaries, postUpdootToSummary, deleteUpdootFromSummary, updateSummaryWithUpdoot } from "../../store/actions/updootedSummaries";  
 
 import SummaryItem from "../../components/SummaryItem/SummaryItem";
 
@@ -36,6 +37,7 @@ class Community extends Component {
         }
 
         this.handleUpdoot = this.handleUpdoot.bind(this);
+        this.handleRemoveUpdoot = this.handleRemoveUpdoot.bind(this);
         this.handleTabChange = this.handleTabChange.bind(this);
         this.loadSummaries = this.loadSummaries.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -43,33 +45,28 @@ class Community extends Component {
     }
     
     render(){
-        const { summaries, currentUser } = this.props;
+        const { summaries, currentUser, updootedSummaries } = this.props;
         const { 
                 isLoading, 
                 activeTab, 
                 customSearch: {
-                authorInput,
-                channelNameInput,
-                videoTitleInput
+                    authorInput,
+                    channelNameInput,
+                    videoTitleInput
             } 
         } = this.state;
-        const userId = currentUser.user.id;
-        console.log(summaries);
+        const currentUserId = currentUser.user.id;
+        
         if (Array.isArray(summaries) && !isLoading) {
             const summariesList = summaries.map(summary => {
                 return (
                     <SummaryItem
                         key={summary._id}
-                        videoSource={summary.videoSource}
-                        videoTitle={summary.videoTitle}
-                        title={summary.title}
-                        text={summary.text}
-                        author={summary.author.username}
-                        updoots={summary.updoots}
-                        updootsCount={summary.updootsCount}
-                        createdAt={summary.createdAt}
+                        {...summary}
+                        updootedSummaries={updootedSummaries}
                         onUpdoot={this.handleUpdoot.bind(this, summary._id)}
-                        currentUserId={userId}
+                        onRemoveUpdoot={this.handleRemoveUpdoot.bind(this, summary._id)}
+                        currentUserId={currentUserId}
                     ></SummaryItem>
                 )
             })
@@ -139,6 +136,7 @@ class Community extends Component {
                                 </div>
                             </div> : null
                         }
+                        <h3 className="results-counter">Results: {summariesList.length}</h3>
                         <div className="list-items">
                             {summariesList.length === 0 ? 
                                 <p>No summaries found. :(</p> :
@@ -163,11 +161,16 @@ class Community extends Component {
     }
 
     componentDidMount(){
+        this.props.getUpdootedSummaries();
         this.loadSummaries(SORT_BY.DATE, {})
     }
     
     handleUpdoot(id){
-        this.props.switchUpdootOnSummary(id);
+        this.props.postUpdootToSummary(id, updateSummaryWithUpdoot);
+    }
+
+    handleRemoveUpdoot(id){
+        this.props.deleteUpdootFromSummary(id, updateSummaryWithUpdoot);
     }
 
     handleChange(e) {
@@ -188,15 +191,15 @@ class Community extends Component {
 
         switch(tab){
             case TABS.SORT_BY_DATE:
-                this.loadSummaries(SORT_BY.DATE, {})
-                break
+                this.loadSummaries(SORT_BY.DATE, {});
+                break;
             
             case TABS.SORT_BY_UPDOOTS:
-                this.loadSummaries(SORT_BY.UPDOOTS, {})
-                break
+                this.loadSummaries(SORT_BY.UPDOOTS, {});
+                break;
 
             default:
-                console.log("No tab found.")
+                console.log("No tab found.");
         }
     }
 
@@ -235,8 +238,9 @@ class Community extends Component {
 function mapStateToProps(state){
     return {
         summaries: state.summaries,
-        currentUser: state.currentUser
+        currentUser: state.currentUser,
+        updootedSummaries: state.updootedSummaries
     }
 }
 
-export default connect(mapStateToProps, { getSummaries, switchUpdootOnSummary })(Community);
+export default connect(mapStateToProps, { getSummaries, getUpdootedSummaries, postUpdootToSummary, deleteUpdootFromSummary, updateSummaryWithUpdoot })(Community);

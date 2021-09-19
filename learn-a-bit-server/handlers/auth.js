@@ -47,7 +47,7 @@ exports.signin = async function (req, res, next) {
                 id,
                 username,
                 token
-            })    
+            })
         } else {
             return next({
                 status: 400,

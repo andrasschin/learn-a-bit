@@ -35,7 +35,9 @@ input, textarea {
     z-index: -2; 
 }
 
-/*  Tabs */
+/* -- Common -- */
+
+/* Pages */
 
 .hero-default {
     height: calc(100% - 78px);
@@ -100,8 +102,6 @@ input, textarea {
         transform: rotate(360deg);
     }
 }
-
-/* -- Common -- */
 
 /* - Auth - */
 
@@ -174,4 +174,40 @@ input, textarea {
 .btn-submit-saving {
     color: black;
     background-color: lightskyblue !important;
+}
+
+/* Tabs */
+
+.order-list-by {
+    display: flex;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 1px solid white;
+    overflow:hidden;
+}
+
+.order-list-by .btn-order-by {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    color: white;
+    padding: 10px 15px;
+
+    transition: all 0.25s;
+}
+
+.order-list-by .btn-order-by-active {
+    background-color: royalblue;
+}
+
+.order-list-by .btn-order-by:hover {
+    background-color: #2E86AB;
+}
+
+/* Misc */
+
+.results-counter {
+    color: rgb(23, 173, 211);
+    margin-top: 25px;
+    font-weight: bold;
 }

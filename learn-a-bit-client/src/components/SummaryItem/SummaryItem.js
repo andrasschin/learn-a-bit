@@ -13,12 +13,28 @@ class SummaryItem extends Component {
     }
 
     render(){
-        const { videoSource, videoTitle, createdAt, title, author, updoots, updootsCount, onUpdoot, currentUserId } = this.props;
+        const currentSummaryId = this.props._id;
+        const {
+            videoSource, 
+            videoTitle, 
+            createdAt, 
+            title, 
+            authorName,
+            updootsCount, 
+            onUpdoot,
+            onRemoveUpdoot, 
+            updootedSummaries
+        } = this.props;
         const { showMore } = this.state;
         let { text } = this.props;
 
-        let updootedByUser = updoots.some(userId => {
+        // * This approach won't refresh the component
+        /* let updootedByUser = updoots.some(userId => {
             return userId === currentUserId
+        }); */
+
+        let updootedByUser = updootedSummaries.some(summaryId => {
+            return summaryId._id === currentSummaryId
         });
 
         let dateCreatedAt = new Date(createdAt);
@@ -33,7 +49,7 @@ class SummaryItem extends Component {
             <div className="list-summary-item">
                 <p className="list-summary-item-header">
                     <span className="list-summary-item-header-author">
-                        {author + " "}
+                        {authorName + " "}
                     </span>
                     summarized a the Youtube video
                     <span className="list-summary-item-header-video-title">
@@ -62,7 +78,7 @@ class SummaryItem extends Component {
                     { updootedByUser ? 
                         <button 
                             className="btn-updooted"
-                            onClick={onUpdoot}
+                            onClick={onRemoveUpdoot}
                         >
                             <i className="fas fa-heart"></i>
                         </button> :

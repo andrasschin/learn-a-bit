@@ -35,29 +35,3 @@ export function getSummaries(sortByParams, customSearchParams){
         })
     }
 }
-
-export function switchUpdootOnSummary(summaryId){
-    return (dispatch, getState) => {
-        const { currentUser } = getState();
-        const userId = currentUser.user.id;
-        const data = {
-            user_id: userId,
-            summary_id: summaryId
-        }
-        return new Promise((resolve, reject) => {
-            axios.post("/api/summaries", data)
-                .then(res => {
-                    dispatch(updateSummaryWithUpdoot({
-                        id: summaryId, 
-                        updootsArray: res.data.updoots,
-                        updootsCount: res.data.updootsCount
-                    }));
-                    resolve();
-                })
-                .catch(err => {
-                    console.log("[SWITCHUPDOOT]", err);
-                    reject();
-                })
-        })
-    }
-}

@@ -19,4 +19,5 @@ nav {
 .navbar-brand {
     font-weight: bold;
     font-size: 24px;
+    margin-left: 12px;
 }

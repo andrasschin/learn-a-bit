@@ -39,6 +39,11 @@
     cursor: pointer;
 }
 
+.list-user-summary-item b span i {
+    color: #912F40;
+    margin-right: 3px;
+}
+
 .list-user-summary-item:hover > p > .list-user-summary-item-remove-btn {
     color: crimson;
 }
