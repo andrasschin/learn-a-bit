@@ -32,9 +32,7 @@ exports.deleteChannel = async function (req, res, next){
         user.youtubeChannels.pull(channel._id);
         await user.save();
         
-        // ! Deprecated
-        // TODO Rewrite
-        channel.remove(); 
+        await db.YoutubeChannel.findByIdAndDelete(channel._id);
         res.status(200).json(channel);
     } catch (err) {
         return next(err);

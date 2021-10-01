@@ -1,9 +1,10 @@
 .hero-video {
-    background-color: cadetblue;
+    background-color: #0d835e;
 }
 
 .container-video {
     color: white;
+    background-color: #11a073;
 }
 
 .container-video iframe {

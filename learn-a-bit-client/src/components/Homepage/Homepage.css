@@ -1,103 +1,111 @@
-.home-hero {
-    width: 100%;
+.home-main {
+    width: 97%;
     height: 100%;
-    overflow: auto;
-    background-image: url("../../images/home-bg.jpg");
-    background-position: center center;
-    background-size: cover;
-    opacity: 0.9;
-
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    margin: auto;
 }
 
-.home-hero .home-item {
-    opacity: 1;
+.home-main h1 {
+    padding: 25px 0;
+    letter-spacing: 5px;
+    height: 15%;
+    margin-bottom: 0;
+}
+
+.current-user-username {
     color: orangered;
-    background-color: rgba(60, 60, 60, 0.65);
-    font-size: 1.3rem;
-    padding: 20px 10px;
-    text-shadow: 2px 2px 2px black;
-}
-
-.home-hero .home-item h1, .home-hero .home-item h3, .home-hero .home-item p {
-    position: relative;
-    animation: slide-up 1.5s 0s forwards;
-}
-
-.home-hero .home-item h1 {
-    font-size: 4.5rem;
-}
-
-.home-hero .home-item h1 b {
-    color: orange;
-}
-
-.home-hero .home-item h3 {
-    font-size: 3rem;
-}
-
-.home-hero .home-item p {
-    font-size: 1.5rem;
-}
-
-.home-hero .home-item div {
-    display: block;
-    position: relative;
-    margin: 30px auto;
-    opacity: 0;
-
-    animation: slide-from-left 0.3s 1.5s forwards;
-}
-
-.home-hero .home-item .delayed-animation {
-    animation-delay: 1.8s;
-}
-
-.home-hero .home-item a {
-    color: white;
-    text-decoration: none;
-    text-shadow: none;
+    font-weight: bold;
 }
 
 .link-to-signup {
     background-color: #157A6E;
 }
 
-.link-to-channels {
+.link-to-signin {
     background-color:mediumvioletred;
 }
 
-.link-to-community {
-    background-color: lightseagreen;
+.home-main > .presentation-row:nth-child(2n) .presentation-item:not(.presentation-long) {
+    order: 2;
 }
 
-@keyframes slide-up {
-    from {
-        opacity: 0;
-        top: 50px;
-    }
-
-    to {
-        opacity: 1;
-        top: 0;
-    }
+.home-main > .presentation-row:nth-child(2n) .presentation-item:not(.presentation-short) {
+    order: 1;
 }
 
-@keyframes slide-from-left {
-    from {
-        opacity: 0;
-        left: -200px;
-    }
+.home-main > .presentation-row:nth-child(2n+1) .presentation-item:not(.presentation-long) {
+    order: 1;
+}
 
-    to {
-        opacity: 1;
-        left: 0;
+.home-main > .presentation-row:nth-child(2n+1) .presentation-item:not(.presentation-short) {
+    order: 2;
+}
+
+.container-navigation-buttons {
+    height: 15%;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+}
+
+.container-navigation-buttons a {
+    color: white;
+    text-decoration: none;
+    text-shadow: none;
+}
+
+.presentation-row {
+    display: flex;
+    height: 22%;
+}
+
+.presentation-item {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.presentation-item > * {
+    margin: 0;
+}
+
+.presentation-item p {
+    text-align: center;
+    padding: 0 15%;
+}
+
+.presentation-short {
+    font-size: 2.9rem;
+    background-color: #2E86AB;
+    color: white;
+}
+
+.presentation-long {
+    font-size: 1.3rem;
+    font-style: italic;
+}
+
+.footer {
+    padding: 10px 0;
+}
+
+.footer p {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 992px) {
+    .presentation-row {
+        flex-direction: column;
+    }
+    
+    .home-main > .presentation-row:nth-child(2n) .presentation-item:not(.presentation-long) {
+        order: 1;
+    }
+    
+    .home-main > .presentation-row:nth-child(2n) .presentation-item:not(.presentation-short) {
+        order: 2;
     }
 }

@@ -1,4 +1,5 @@
-import axios from "axios";
+import { apiCall } from "../../services/api";
+import { API_ROUTES, getApiRoute } from "../../helpers/apiRoutes"
 import { ADD_CHANNEL, LOAD_CHANNELS, REMOVE_CHANNEL } from "../actionTypes";
 
 function loadChannels(channels){
@@ -26,34 +27,29 @@ export function getChannels(){
     return (dispatch, getState) => {
         let { currentUser } = getState();
         const userId = currentUser.user.id;
-        
-        return new Promise((resolve, reject) => {
-            axios.get(`/api/users/${userId}/sources/youtube-channels`)
-                .then(res => {
-                    dispatch(loadChannels(res.data));
-                    resolve();
-                })
-                .catch(err => {
-                    console.log("[ERROR] GETCHANNELS: ", err.response.data.error.message)
-                    reject(err);
-                })
-        })
+
+        const path = getApiRoute(API_ROUTES.CHANNELS.GET, userId);
+
+        return apiCall("GET", path)
+            .then(channels => dispatch(loadChannels(channels)))
     }
 }
 
-export function postChannel(newChannel){
+export function postChannel(newChannelData){
     return (dispatch, getState) => {
         let { currentUser } = getState();
         const userId = currentUser.user.id;
-        
+
+        const path = getApiRoute(API_ROUTES.CHANNELS.POST, userId);
+
         return new Promise((resolve, reject) => {
-            axios.post(`/api/users/${userId}/sources/youtube-channels`, newChannel)
-                .then(res =>{
-                    dispatch(addChannel(res.data));
+            apiCall("POST", path, newChannelData)
+                .then(newChannel => {
+                    dispatch(addChannel(newChannel))
                     resolve();
                 })
                 .catch(err => {
-                    console.log("[ERROR] POSTCHANNEL: ", err.response.data.error.message)
+                    console.log("[ERROR] POSTCHANNEL: ", err.message);
                     reject();
                 })
         })
@@ -65,14 +61,16 @@ export function deleteChannel(channelId){
         let { currentUser } = getState();
         const userId = currentUser.user.id;
 
+        const path = getApiRoute(API_ROUTES.CHANNELS.DELETE, userId, channelId);
+
         return new Promise((resolve, reject) => {
-            axios.delete(`/api/users/${userId}/sources/youtube-channels/${channelId}`)
+            apiCall("DELETE", path)
                 .then(() => {
                     dispatch(removeChannel(channelId));
                     resolve();
                 })
                 .catch(err => {
-                    console.log("[ERROR] DELETECHANNEL: ", err.response.data.error);
+                    console.log("[ERROR] DELETECHANNEL: ", err.message);
                     reject();
                 })
         })

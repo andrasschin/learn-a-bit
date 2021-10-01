@@ -2,7 +2,7 @@
     text-transform: uppercase;
     font-size: 1.5rem;
     letter-spacing: 2px;
-    background-color: #17a2b8;
+    background-color: #d15d57;
     padding: 5px 10px;
     font-weight: 600;
     margin: 10px 15px;
@@ -13,7 +13,7 @@
 
 .list-channel-item:hover {
     color: white;
-    background-color: #D56F3E;
+    background-color: #f16c64;
     cursor: pointer;
 }
 

@@ -95,15 +95,13 @@ class NewChannelForm extends Component {
                 isLoading: true
             });
 
-            setTimeout(() => {
-                this.props.postChannel({
-                    channelName: this.state.channelNameInput,
-                    channelId: this.state.channelIdInput
+            this.props.postChannel({
+                channelName: this.state.channelNameInput,
+                channelId: this.state.channelIdInput
+            })
+                .then(() => {
+                    this.props.onFormToggle();
                 })
-                    .then(() => {
-                        this.props.onFormToggle();
-                    })
-            }, 2000);
         }
     }
 

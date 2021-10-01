@@ -27,7 +27,6 @@ class SummaryList extends Component {
     render(){
         const { userSummaries, updootedSummaries, currentUser } = this.props;
         const { isLoading, activeTab } = this.state;
-        const currentUserId = currentUser.user.id;
 
         if (!isLoading) {
             let summaryList;
@@ -62,7 +61,7 @@ class SummaryList extends Component {
 
             return (
                 <div className="hero-default hero-summary">
-                    <div className="container-default">
+                    <div className="container-default container-user-summary">
                         <h2>Your Summaries</h2>
                         <div className="order-by-list">
                         <div className="order-list-by">
@@ -83,7 +82,7 @@ class SummaryList extends Component {
                         </div>
                         { summaryList.length === 0 ? 
                             <div className="list-items">
-                                <p>You don't have any summaries yet. :(</p>
+                                <p>Nothing here :-(</p>
                             </div> 
                             :
                             <div className="list-items">

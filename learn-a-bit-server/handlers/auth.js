@@ -51,13 +51,13 @@ exports.signin = async function (req, res, next) {
         } else {
             return next({
                 status: 400,
-                message: "Incorrect password." // ? Is this always the case?
+                message: "Incorrect password."
             })
         }
     } catch (err) {
         return next({
             status: 400,
-            message: "User not found." // ? Is this always the case?
+            message: "User not found."
         })
     }
 }

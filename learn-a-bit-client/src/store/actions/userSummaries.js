@@ -1,5 +1,6 @@
-import axios from "axios";
-import { LOAD_USER_SUMMARIES, ADD_USER_SUMMARY, REMOVE_USER_SUMMARY} from "../actionTypes";
+import { apiCall } from "../../services/api";
+import { API_ROUTES, getApiRoute } from "../../helpers/apiRoutes";
+import { LOAD_USER_SUMMARIES, ADD_USER_SUMMARY, REMOVE_USER_SUMMARY } from "../actionTypes";
 import { addError } from "../actions/errors";
 
 function loadSummaries(summaries){
@@ -28,34 +29,38 @@ export function getSummaries(){
         const { currentUser } = getState();
         const userId = currentUser.user.id;
 
+        const path = getApiRoute(API_ROUTES.USER_SUMMARIES.GET, userId);
+
         return new Promise((resolve, reject) => {
-            axios.get(`/api/users/${userId}/summaries`)
-                .then(res => {
-                    dispatch(loadSummaries(res.data))
+            apiCall("GET", path)
+                .then(userSummaries => {
+                    dispatch(loadSummaries(userSummaries))
                     resolve();
                 })
                 .catch(err => {
-                    console.log("[ERROR] GETSUMMARIES: ", err);
+                    console.log("[ERROR] GETSUMMARIES: ", err.message);
                     reject();
                 })
         })
     }
 }
 
-export function postSummary(newSummary){
+export function postSummary(newSummaryData){
     return (dispatch, getState) => {
         const { currentUser } = getState();
         const userId = currentUser.user.id;
 
+        const path = getApiRoute(API_ROUTES.USER_SUMMARIES.POST, userId);
+
         return new Promise((resolve, reject) => {
-            axios.post(`/api/users/${userId}/summaries`, newSummary)
-                .then(res => {
-                    dispatch(addSummary(res.data));
+            apiCall("POST", path, newSummaryData)
+                .then(newSummary => {
+                    dispatch(addSummary(newSummary));
                     resolve();
                 })
                 .catch(err => {
                     console.log("[ERROR] POSTSUMMARY: ", err);
-                    dispatch(addError("Something went wrong :("))
+                    dispatch(addError("Something went wrong :("));
                     reject();
                 })
         })
@@ -67,14 +72,16 @@ export function deleteSummary(summaryId){
         const { currentUser } = getState();
         const userId = currentUser.user.id;
         
+        const path = getApiRoute(API_ROUTES.USER_SUMMARIES.DELETE, userId, summaryId);
+
         return new Promise((resolve, reject) => {
-            axios.delete(`/api/users/${userId}/summaries/${summaryId}`)
+            apiCall("DELETE", path)
                 .then(() => {
                     dispatch(removeSummary(summaryId));
                     resolve();
                 })
                 .catch(err => {
-                    console.log("[ERROR] DELETESUMMARY: ", err);
+                    console.log("[ERROR] DELETESUMMARY: ", err.message);
                     reject();
                 })
         })

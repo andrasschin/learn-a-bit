@@ -16,3 +16,7 @@
 .summary-form input, .summary-form textarea, .summary-form button {
     font-size: 1.2rem;
 }
+
+.form-text {
+    color: rgba(255, 255, 255, 0.75);
+}

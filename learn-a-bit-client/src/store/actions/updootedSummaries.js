@@ -1,5 +1,10 @@
-import axios from "axios";
-import { LOAD_UPDOOTED_SUMMARIES, ADD_UPDOOTED_SUMMARY, REMOVE_UPDOOTED_SUMMARY, UPDATE_SUMMARY_WITH_UPDOOT, UPDATE_USER_SUMMARY_WITH_UPDOOT } from "../actionTypes";
+import { apiCall } from "../../services/api";
+import { API_ROUTES, getApiRoute } from "../../helpers/apiRoutes";
+import { LOAD_UPDOOTED_SUMMARIES, 
+    ADD_UPDOOTED_SUMMARY, 
+    REMOVE_UPDOOTED_SUMMARY, 
+    UPDATE_SUMMARY_WITH_UPDOOT, 
+    UPDATE_USER_SUMMARY_WITH_UPDOOT } from "../actionTypes";
 
 function loadUpdootedSummaries(summaries){
     return {
@@ -41,14 +46,16 @@ export function getUpdootedSummaries() {
         const { currentUser } = getState();
         const userId = currentUser.user.id;
 
+        const path = getApiRoute(API_ROUTES.UPDOOTED_SUMMARIES.GET, userId);
+
         return new Promise((resolve, reject) => {
-            axios.get(`/api/users/${userId}/updooted-summaries`)
-                .then(res => {
-                    dispatch(loadUpdootedSummaries(res.data))
+            apiCall("GET", path)
+                .then(updootedSummaries => {
+                    dispatch(loadUpdootedSummaries(updootedSummaries))
                     resolve();
                 })
                 .catch(err => {
-                    console.log("[GETUPDOOTEDSUMMARIES]: ", err);
+                    console.log("[GETUPDOOTEDSUMMARIES]: ", err.message);
                     reject();
                 })
         })
@@ -59,15 +66,15 @@ export function postUpdootToSummary(summaryId, actionCreator) {
     return (dispatch, getState) => {
         const { currentUser } = getState();
         const userId = currentUser.user.id;
-        const data = {
+        const summaryToBeUpdooted = {
             summary_id: summaryId
         }
 
-        return new Promise((resolve, reject) => {
-            axios.post(`/api/users/${userId}/updooted-summaries/`, data)
-                .then((res) => {
-                    const updootedSummary = res.data;
+        const path = getApiRoute(API_ROUTES.UPDOOTED_SUMMARIES.POST, userId);
 
+        return new Promise((resolve, reject) => {
+            apiCall("POST", path, summaryToBeUpdooted)
+                .then(updootedSummary => {
                     dispatch(addUpdootedSummary(updootedSummary));
                     dispatch(actionCreator({
                         id: updootedSummary._id,
@@ -77,7 +84,7 @@ export function postUpdootToSummary(summaryId, actionCreator) {
                     resolve();
                 })
                 .catch(err => {
-                    console.log("[postUpdootToSummary]: ", err)
+                    console.log("[postUpdootToSummary]: ", err.message)
                     reject();
                 })
         })
@@ -89,11 +96,11 @@ export function deleteUpdootFromSummary(summaryId, actionCreator) {
         const { currentUser } = getState();
         const userId = currentUser.user.id;
 
-        return new Promise((resolve, reject) => {
-            axios.delete(`/api/users/${userId}/updooted-summaries/${summaryId}`)
-                .then((res) => {
-                    const removedUpdootSummary = res.data;
+        const path = getApiRoute(API_ROUTES.UPDOOTED_SUMMARIES.DELETE, userId, summaryId);
 
+        return new Promise((resolve, reject) => {
+            apiCall("DELETE", path)
+                .then(removedUpdootSummary => {
                     dispatch(removeUpdootedSummary(removedUpdootSummary));
                     dispatch(actionCreator({
                         id: removedUpdootSummary._id,
@@ -103,7 +110,7 @@ export function deleteUpdootFromSummary(summaryId, actionCreator) {
                     resolve();
                 })
                 .catch(err => {
-                    console.log("[deleteUpdootFromSummary]: ", err);
+                    console.log("[deleteUpdootFromSummary]: ", err.message);
                     reject();
                 })
         })

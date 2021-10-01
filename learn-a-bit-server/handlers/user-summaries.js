@@ -63,8 +63,14 @@ exports.deleteSummary = async function (req, res, next) {
         // * Delete summary from the user model
         user.summaries.pull(summary._id);
         await user.save();
+
+        // * Delete summary id from user's that have updooted it
+        for (const updootUserId of summary.updoots) {
+            let updootUser = await db.User.findById(updootUserId);
+            updootUser.updootedSummaries.pull(summary._id);
+        }
         
-        summary.remove();
+        await db.Summary.findByIdAndDelete(summary._id);
         res.status(200).json(summary);
     } catch (err) {
         next(err);

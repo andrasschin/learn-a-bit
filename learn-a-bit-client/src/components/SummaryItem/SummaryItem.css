@@ -3,13 +3,14 @@
     margin: 20px;
     padding: 20px;
     border-radius: 10px;
-    background-color: #232b33;
+    background-color: #DCD6F7;
+    color: black;
 }
 
 .list-summary-item-header {
     text-align: left;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid black;
 }
 
 .list-summary-item-header-author {
@@ -51,8 +52,8 @@
 
 .btn-updoot {
     background-color: transparent;
-    border: 1px solid whitesmoke;
-    color: whitesmoke;
+    border: 1px solid black;
+    color: black;
     margin-top: 15px;
     padding: 7px 20px;
     border-radius: 10px;
@@ -63,9 +64,9 @@
 }
 
 .btn-updoot:hover {
-    background-color: whitesmoke;
-    border: 1px solid whitesmoke;
-    color: black;
+    background-color: #912F40;
+    color: white;
+    border: 1px solid #912F40;
 }
 
 .btn-updooted {
@@ -86,6 +87,11 @@
 }
 
 .updoot-count {
-    color: orange;
+    color: #212529;
     padding: 0 10px;
+    font-weight: bold;
+}
+
+.btn-updooted + .updoot-count {
+    color: green;
 }

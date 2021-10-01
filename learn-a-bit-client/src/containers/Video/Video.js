@@ -81,7 +81,7 @@ class Video extends Component {
         // Development version
         //  -> Simulating the request for videos
 
-        this.setState(previousState => {
+        /* this.setState(previousState => {
             return {
                 ...previousState,
                 isLoading: false,
@@ -91,14 +91,13 @@ class Video extends Component {
                     videoTitle: "How To Terraform Venus (Quickly)"
                 }
             }
-        })
+        }) */
 
 
         // Production version
-        /* axios.get(URL)
+        axios.get(URL)
             .then(res => {
                 let videos = res.data;
-                console.log(videos);
                 let randomIndex = Math.floor(Math.random() * videos.length);
                 this.setState({
                     isLoading: false,
@@ -107,7 +106,7 @@ class Video extends Component {
             })
             .catch(err => {
                 console.log("[ERROR] RANDOMVIDEO: ", err)
-            }) */
+            })
     }
 }
 

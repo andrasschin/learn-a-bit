@@ -48,13 +48,22 @@ input, textarea {
 .container-default {
     width: 50%;
     max-height: 100%;
-    overflow-y: auto;
     margin: auto;
-    background-color: #212529;
+    overflow-y: auto;
+    background-color: transparent;
     font-size: 1.5rem;
     padding: 30px 30px;
     border-radius: 10px;
 }
+
+.hero-default::-webkit-scrollbar {
+    display: none;
+}
+
+.hero-default {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+} 
 
 .container-default h2 {
     color: white;
@@ -197,17 +206,19 @@ input, textarea {
 }
 
 .order-list-by .btn-order-by-active {
-    background-color: royalblue;
+    background-color: #d15d57;
+    color: white;
 }
 
 .order-list-by .btn-order-by:hover {
-    background-color: #2E86AB;
+    background-color: #DCD6F7;
+    color: black;
 }
 
 /* Misc */
 
 .results-counter {
-    color: rgb(23, 173, 211);
+    color: #16C172;
     margin-top: 25px;
     font-weight: bold;
 }

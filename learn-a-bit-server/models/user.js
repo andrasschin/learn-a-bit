@@ -13,11 +13,6 @@ let userSchema = new Schema({
         type: String,
         required: true
     },
-    followers: {
-        type: Array,
-        default: new Array(),
-        ref: "User"
-    },
     createdAt: {
         type: Date,
         default: Date.now

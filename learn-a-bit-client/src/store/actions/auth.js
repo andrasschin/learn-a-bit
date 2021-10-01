@@ -1,6 +1,8 @@
-import axios from "axios";
+import { apiCall } from "../../services/api";
+import { API_ROUTES, getApiRoute } from "../../helpers/apiRoutes";
 import { SET_CURRENT_USER, LOGOUT_USER } from "../actionTypes";
 import { addError, removeError } from "./errors";
+import { setAuthorizationToken } from "../../services/api";
 
 export function setCurrentUser(user) {
     return {
@@ -15,14 +17,6 @@ export function logout(){
     }
 }
 
-export function setAuthorizationToken(token) {
-    if (token) {
-        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    } else {
-        delete axios.defaults.headers.common["Authorization"];
-    }
-}
-
 export function logoutUser(){
     return dispatch => {
         localStorage.clear();
@@ -33,48 +27,40 @@ export function logoutUser(){
 
 export function authUser(userData){
     return dispatch => {
+        const PATH = getApiRoute(API_ROUTES.AUTH.LOGIN);
+
         return new Promise((resolve, reject) => {
-            axios.post("/api/auth/signin", userData)
-                .then(res => {
-                    if (res.status === 200) {
-                        console.log("[SIGNIN] Response is ok.");
-                        return res.data;
-                    } else {
-                        console.log("[SIGNIN] Response is not ok.");
-                        return {};
-                    }
-                })
+            return apiCall("POST", PATH, userData)
                 .then((userData) => {
                     localStorage.setItem("jwtToken", userData.token);
                     setAuthorizationToken(userData.token);
                     dispatch(setCurrentUser(userData));
-                    dispatch(removeError());
                     resolve();
                 })
                 .catch(err => {
-                    console.log("[SIGNIN] ERROR: ", err.response.data.error.message);
-                    dispatch(addError(err.response.data.error.message));
+                    console.log("[SIGNIN] ERROR: ", err.message);
+                    dispatch(addError(err.message));
                     reject();
                 });
         })
     }
 }
 
-export function signUpUser(userData){
+export function signUpUser(newUserData){
     return dispatch => {
+        const path = getApiRoute(API_ROUTES.AUTH.REGISTER);
+
         return new Promise((resolve, reject) => {
-            axios.post("/api/auth/signup", userData)
-                .then(res => {
-                    if (res.status === 200) {
-                        localStorage.setItem("jwtToken", userData.token);
-                        dispatch(setCurrentUser(userData));
-                        dispatch(removeError());
-                        resolve();
-                    }
+            apiCall("POST", path, newUserData)
+                .then(newUser => {
+                    localStorage.setItem("jwtToken", newUser.token);
+                    setAuthorizationToken(newUser.token);
+                    dispatch(setCurrentUser(newUser));
+                    resolve();
                 })
                 .catch(err => {
                     console.log("[SIGNUP] ERROR: ", err.message);
-                    dispatch(addError(err.response.data.error.message));
+                    dispatch(addError(err.message));
                     reject();
                 })
         })

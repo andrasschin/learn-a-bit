@@ -57,7 +57,7 @@ class Community extends Component {
         } = this.state;
         const currentUserId = currentUser.user.id;
         
-        if (Array.isArray(summaries) && !isLoading) {
+        if (!isLoading) {
             const summariesList = summaries.map(summary => {
                 return (
                     <SummaryItem
@@ -72,7 +72,7 @@ class Community extends Component {
             })
             return (
                 <div className="hero-default hero-community">
-                    <div className="container-default">
+                    <div className="container-default container-community">
                         <h2>Community</h2>
                         <div className="order-list-by">
                                 <button 

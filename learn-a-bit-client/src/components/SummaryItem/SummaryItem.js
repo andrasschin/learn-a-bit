@@ -28,11 +28,6 @@ class SummaryItem extends Component {
         const { showMore } = this.state;
         let { text } = this.props;
 
-        // * This approach won't refresh the component
-        /* let updootedByUser = updoots.some(userId => {
-            return userId === currentUserId
-        }); */
-
         let updootedByUser = updootedSummaries.some(summaryId => {
             return summaryId._id === currentSummaryId
         });
@@ -51,7 +46,7 @@ class SummaryItem extends Component {
                     <span className="list-summary-item-header-author">
                         {authorName + " "}
                     </span>
-                    summarized a the Youtube video
+                    summarized the Youtube video
                     <span className="list-summary-item-header-video-title">
                         {" " + videoTitle + " "}
                     </span>

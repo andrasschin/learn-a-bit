@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const db = require("../models");
 
 let summarySchema = new Schema({
     author: {

@@ -26,7 +26,7 @@ class ChannelList extends Component {
         const { channels } = this.props;
         const { isLoading, showForm } = this.state;
         
-        if (Array.isArray(channels) && !isLoading){
+        if (!isLoading){
             const channelList = channels.map(channel => {
                 return (
                     <ChannelItem 
@@ -112,8 +112,8 @@ class ChannelList extends Component {
 
     componentDidMount(){
         this.props.getChannels()
-        .then(this.setState({ isLoading: false }))
-        .catch(err => console.log(err));
+            .then(this.setState({ isLoading: false }))
+            .catch(err => console.log(err));
     }
 
     onFormToggle(){

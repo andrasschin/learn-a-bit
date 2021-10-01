@@ -8,7 +8,8 @@ import { Provider } from "react-redux";
 import { configureStore } from "./store";
 import jwtDecode from "jwt-decode";
 
-import { setAuthorizationToken, setCurrentUser } from "./store/actions/auth";
+import { setAuthorizationToken } from "./services/api";
+import { setCurrentUser } from "./store/actions/auth";
 
 const store = configureStore();
 
