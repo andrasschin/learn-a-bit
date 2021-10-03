@@ -12,4 +12,10 @@ Youtube is full of well-presented, educational videos, but by just watching them
 - Backend: Node.js, Express, mongoose
 - Database: MongoDB
 
+## Future development ideas
+
+- Keywords for summaries (e. g. Tech, Math, Art, History etc.). Summaries would be also searchable by these.
+- User profile component with the option to delete the user.
+- More errors displayed.
+
 *Please note that this is an education project. If you choose to register, please use a password that you don't use anywhere else for safety reasons.*
