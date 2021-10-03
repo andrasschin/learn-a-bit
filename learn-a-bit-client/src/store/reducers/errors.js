@@ -4,6 +4,7 @@ const DEFAULT_STATE = {
     message: null
 }
 
+// eslint-disable-next-line
 export default (state=DEFAULT_STATE, action) => {
     switch(action.type){
         case ADD_ERROR:

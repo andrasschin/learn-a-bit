@@ -5,6 +5,7 @@ const DEFAULT_STATE = {
     user: {}
 }
 
+// eslint-disable-next-line
 export default (state=DEFAULT_STATE, action) => {
     switch(action.type){
         case SET_CURRENT_USER:

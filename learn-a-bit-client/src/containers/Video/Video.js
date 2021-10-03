@@ -37,6 +37,7 @@ class Video extends Component {
                         <h3>{currentVideo.videoTitle}</h3>
 
                         <iframe
+                            title={currentVideo.videoTitle}
                             src={videoURL}
                         > 
                         </iframe>

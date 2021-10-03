@@ -22,7 +22,7 @@ class NewChannelForm extends Component {
 
     render(){
         const { channelNameInput, channelIdInput, isLoading } = this.state;
-        const { history, errors, removeError, addError } = this.props;
+        const { history, errors, removeError } = this.props;
 
         history.listen(() => {
             removeError();

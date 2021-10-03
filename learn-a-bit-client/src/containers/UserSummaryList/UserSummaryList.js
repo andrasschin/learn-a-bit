@@ -25,7 +25,7 @@ class SummaryList extends Component {
     }
 
     render(){
-        const { userSummaries, updootedSummaries, currentUser } = this.props;
+        const { userSummaries, updootedSummaries } = this.props;
         const { isLoading, activeTab } = this.state;
 
         if (!isLoading) {
@@ -56,7 +56,7 @@ class SummaryList extends Component {
                 })
             }
             else {
-                summaryList = new Array();
+                summaryList = [];
             }
 
             return (

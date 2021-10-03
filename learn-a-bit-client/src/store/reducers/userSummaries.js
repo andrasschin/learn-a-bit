@@ -1,5 +1,6 @@
 import { ADD_USER_SUMMARY, LOAD_USER_SUMMARIES, REMOVE_USER_SUMMARY } from "../actionTypes";
 
+// eslint-disable-next-line
 export default (state=[], action) => {
     switch(action.type){
         case LOAD_USER_SUMMARIES:

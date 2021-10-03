@@ -1,7 +1,7 @@
 import { apiCall } from "../../services/api";
 import { API_ROUTES, getApiRoute } from "../../helpers/apiRoutes";
 import { SET_CURRENT_USER, LOGOUT_USER } from "../actionTypes";
-import { addError, removeError } from "./errors";
+import { addError } from "./errors";
 import { setAuthorizationToken } from "../../services/api";
 
 export function setCurrentUser(user) {

@@ -1,5 +1,6 @@
 import { LOAD_UPDOOTED_SUMMARIES, ADD_UPDOOTED_SUMMARY, REMOVE_UPDOOTED_SUMMARY, UPDATE_USER_SUMMARY_WITH_UPDOOT } from "../actionTypes";
 
+// eslint-disable-next-line
 export default (state=[], action) => {
     switch(action.type){
         case LOAD_UPDOOTED_SUMMARIES:

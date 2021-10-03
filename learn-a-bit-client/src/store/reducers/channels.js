@@ -1,5 +1,6 @@
 import { LOAD_CHANNELS, ADD_CHANNEL, REMOVE_CHANNEL } from "../actionTypes"
 
+// eslint-disable-next-line
 export default (state=[], action) => {
     switch (action.type) {
         case LOAD_CHANNELS:

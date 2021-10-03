@@ -1,5 +1,6 @@
 import { LOAD_SUMMARIES, UPDATE_SUMMARY_WITH_UPDOOT } from "../actionTypes";
 
+// eslint-disable-next-line
 export default (state=[], action) => {
     switch(action.type){
         case LOAD_SUMMARIES:

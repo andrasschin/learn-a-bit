@@ -24,7 +24,7 @@ class NewSummaryForm extends Component {
 
     render(){
         const { titleInput, textInput, isLoading } = this.state;
-        const { videoSource, videoTitle, history, errors, addError, removeError } = this.props;
+        const { videoSource, videoTitle, history, errors, removeError } = this.props;
 
         history.listen(() => {
             removeError();
