@@ -26,7 +26,7 @@ const Homepage = (props) => {
             }
 
             <div className="presentation-row">
-                <div className="presentation-item presentation-short">
+                <div className="presentation-item presentation-short" id="presentation-short-first">
                     <p>Add a Youtube channel.</p>
                 </div>
                 <div className="presentation-item presentation-long">
@@ -38,13 +38,13 @@ const Homepage = (props) => {
                 <div className="presentation-item presentation-long">
                     <p>Selecting a channel from your list will show you a random video from that channel.</p>
                 </div>
-                <div className="presentation-item presentation-short">
+                <div className="presentation-item presentation-short" id="presentation-short-second">
                     <p>Watch a video.</p>
                 </div>
             </div>
 
             <div className="presentation-row">
-                <div className="presentation-item presentation-short">
+                <div className="presentation-item presentation-short" id="presentation-short-third">
                     <p>Submit your summary.</p>
                 </div>
                 <div className="presentation-item presentation-long">
@@ -56,7 +56,7 @@ const Homepage = (props) => {
                 <div className="presentation-item presentation-long">
                     <p>Maybe compare your own writing with other's on the same video or check out your friend's summaries.</p>
                 </div>
-                <div className="presentation-item presentation-short">
+                <div className="presentation-item presentation-short" id="presentation-short-fourth">
                     <p>Check out others.</p>
                 </div>
             </div>

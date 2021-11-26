@@ -70,6 +70,7 @@
 
 .presentation-item > * {
     margin: 0;
+    font-weight: bold;
 }
 
 .presentation-item p {
@@ -79,13 +80,27 @@
 
 .presentation-short {
     font-size: 2.9rem;
-    background-color: #2E86AB;
     color: white;
+}
+
+#presentation-short-first {
+    color: #D81E5B;
+}
+
+#presentation-short-second {
+    color: #6E44FF;
+}
+
+#presentation-short-third {
+    color: #16C172;
+}
+
+#presentation-short-fourth {
+    color: #F98948;
 }
 
 .presentation-long {
     font-size: 1.3rem;
-    font-style: italic;
 }
 
 .footer {
